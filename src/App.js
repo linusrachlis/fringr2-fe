@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import SelectShows from './SelectShows'
+import Calendar from './Calendar'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// NOTE: this is only the first 20 shows
+import shows from './data'
+
+import './App.css'
+// const numColours = 17
+
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      selectedShows: [],
+
+    }
+
+    this.selectShow = this.selectShow.bind(this)
+    this.deselectShow = this.deselectShow.bind(this)
+  }
+
+  selectShow(show) {
+    this.setState({
+      selectedShows: this.state.selectedShows.concat(show)
+    })
+  }
+
+  deselectShow(show) {
+    this.setState({
+      selectedShows: this.state.selectedShows.filter(eachShow => eachShow !== show)
+    })
+  }
+
+  render() {
+    return <>
+      <SelectShows
+        shows={shows}
+        selectedShows={this.state.selectedShows}
+        selectShow={this.selectShow}
+        deselectShow={this.deselectShow}
+      />
+      <Calendar
+        selectedShows={this.state.selectedShows}
+      />
+    </>
+  }
 }
 
-export default App;
+export default App

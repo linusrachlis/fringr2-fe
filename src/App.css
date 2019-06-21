@@ -1,33 +1,102 @@
-.App {
-  text-align: center;
+.selected-shows {
+  color: blue;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.calendar {
+  border: 1px solid grey;
+  color: grey;
+  padding: 2em;
+  margin: 2em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+.calendar-container {
+  width: 100%;
+  height: 1000px;
+}
+
+.calendar-item-colours-0 {
+  background-color: maroon;
   color: white;
+  border: 1px solid white;
 }
-
-.App-link {
-  color: #61dafb;
+.calendar-item-colours-1 {
+  background-color: red;
+  color: black;
+  border: 1px solid black;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.calendar-item-colours-2 {
+  background-color: orange;
+  color: black;
+  border: 1px solid black;
+}
+.calendar-item-colours-3 {
+  background-color: yellow;
+  color: black;
+  border: 1px solid black;
+}
+.calendar-item-colours-4 {
+  background-color: olive;
+  color: white;
+  border: 1px solid white;
+}
+.calendar-item-colours-5 {
+  background-color: green;
+  color: white;
+  border: 1px solid white;
+}
+.calendar-item-colours-6 {
+  background-color: purple;
+  color: white;
+  border: 1px solid white;
+}
+.calendar-item-colours-7 {
+  background-color: fuchsia;
+  color: black;
+  border: 1px solid black;
+}
+.calendar-item-colours-8 {
+  background-color: lime;
+  color: black;
+  border: 1px solid black;
+}
+.calendar-item-colours-9 {
+  background-color: teal;
+  color: white;
+  border: 1px solid white;
+}
+.calendar-item-colours-10 {
+  background-color: aqua;
+  color: black;
+  border: 1px solid black;
+}
+.calendar-item-colours-11 {
+  background-color: blue;
+  color: white;
+  border: 1px solid white;
+}
+.calendar-item-colours-12 {
+  background-color: navy;
+  color: white;
+  border: 1px solid white;
+}
+.calendar-item-colours-13 {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+}
+.calendar-item-colours-14 {
+  background-color: gray;
+  color: white;
+  border: 1px solid white;
+}
+.calendar-item-colours-15 {
+  background-color: silver;
+  color: black;
+  border: 1px solid black;
+}
+.calendar-item-colours-16 {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
 }
