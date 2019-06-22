@@ -5,7 +5,7 @@ class SelectShows extends React.Component {
     super(props)
 
     this.state = {
-      searchInput: ''
+      searchInput: '',
     }
 
     this.updateShowSearch = this.updateShowSearch.bind(this)
@@ -21,10 +21,10 @@ class SelectShows extends React.Component {
         {
           this.props.selectedShows
             .map(show =>
-              <li onClick={_ => this.props.deselectShow(show)} key={show.url}>{show.title}</li>)
+              <li onClick={() => this.props.deselectShow(show)} key={show.id}>{show.title}</li>)
         }
       </ul>
-      <input type="text" onChange={this.updateShowSearch} />
+      <label>Filter by title: <input type="text" onChange={this.updateShowSearch} /></label>
       <ul>
         {
           this.props.shows
@@ -36,7 +36,7 @@ class SelectShows extends React.Component {
               }
             })
             .map(show =>
-              <li onClick={() => this.props.selectShow(show)} key={show.url}>{show.title}</li>)
+              <li onClick={() => this.props.selectShow(show)} key={show.id}>{show.title}</li>)
         }
       </ul>
     </div>

@@ -2,7 +2,6 @@ import React from 'react'
 import SelectShows from './SelectShows'
 import Calendar from './Calendar'
 
-// NOTE: this is only the first 20 shows
 import shows from './data'
 
 import './App.css'

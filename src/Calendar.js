@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 
-const numColours = 17
+const numCssColours = 17
 
 class Calendar extends React.Component {
   render() {
@@ -17,9 +17,7 @@ class Calendar extends React.Component {
     let minStartTime
     let maxEndTime
 
-    this.props.selectedShows.forEach((show, showIndex) => {
-      const colourIndex = showIndex % numColours
-
+    this.props.selectedShows.forEach(show => {
       show.perfs.forEach(({ flags, start: startString, end: endString }) => {
         const start = moment(startString)
         const end = moment(endString)
@@ -43,6 +41,8 @@ class Calendar extends React.Component {
           days.push(dayString)
           perfsByDay[dayString] = []
         }
+
+        const colourIndex = show.id % numCssColours
 
         perfsByDay[dayString].push({
           title: show.title,
@@ -92,9 +92,10 @@ class CalendarItem extends React.Component {
     const colourClassName = `calendar-item-colour-${this.props.perf.colourIndex}`
     const leftPercent = this.props.perf.startTime.diff(this.props.minStartTime) / this.props.timeRange * 100
     const widthPercent = this.props.perf.endTime.diff(this.props.perf.startTime) / this.props.timeRange * 100
+
     const style = {
       marginLeft: `${leftPercent}%`,
-      width: `${widthPercent}%`
+      width: `${widthPercent}%`,
     }
 
     const perfTime = `${this.props.perf.start.format('H:mm')} - ${this.props.perf.end.format('H:mm')}`
