@@ -38,42 +38,54 @@ class Calendar extends React.Component {
     days.sort()
 
     return <ul className="calendar">
-      {
-        days.map(dayString => {
-          const perfs = perfsByDay[dayString]
-          perfs.sort((a, b) => (a.start < b.start) ? -1 : ((b.start < a.start) ? 1 : 0))
-
-          // TODO check timezone logic
-          // TODO use overall min and overall max, to spread out boxes as much as possible
-          const minTime = moment(`${dayString} 09:00:00`)
-          const maxTime = moment(`${dayString}`).add(1, 'day')
-          const timeRange = minTime.diff(maxTime) // NOTE always the same, ish
-
-          const perfsRender = perfs.map((perf, index) => {
-            const colourClassName = `calendar-item-colour-${perf.colourIndex}`
-            const leftPercent = minTime.diff(perf.start) / timeRange * 100
-            const widthPercent = perf.start.diff(perf.end) / timeRange * 100
-            const style = {
-              marginLeft: `${leftPercent}%`,
-              width: `${widthPercent}%`
-            }
-
-            const perfTime = `${perf.start.format('H:mm')} - ${perf.end.format('H:mm')}`
-            return <li
-              key={index}
-              style={style}
-              className={`calendar-item ${colourClassName}`}
-              title={perfTime}
-            >{perf.title}</li>
-          })
-
-          return <li key={dayString} className="calendar-day">
-            <h2>{dayString}</h2>
-            <ul>{perfsRender}</ul>
-          </li>
-        })
-      }
+      {days.map(dayString =>
+        <CalendarDay
+          dayString={dayString}
+          perfsByDay={perfsByDay}
+        />)}
     </ul>
+  }
+}
+
+class CalendarDay extends React.Component {
+  render() {
+    const perfs = this.props.perfsByDay[this.props.dayString]
+    perfs.sort((a, b) => (a.start < b.start) ? -1 : ((b.start < a.start) ? 1 : 0))
+
+    // TODO check timezone logic
+    // TODO use overall min and overall max, to spread out boxes as much as possible
+    const minTime = moment(`${this.props.dayString} 09:00:00`)
+    const maxTime = moment(`${this.props.dayString}`).add(1, 'day')
+    const timeRange = minTime.diff(maxTime) // NOTE always the same, ish
+
+    const renderedPerfs = perfs.map((perf, index) =>
+      <CalendarItem {...{perf, index, minTime, maxTime, timeRange}} />
+    )
+
+    return <li key={this.props.dayString} className="calendar-day">
+      <h2>{this.props.dayString}</h2>
+      <ul>{renderedPerfs}</ul>
+    </li>
+  }
+}
+
+class CalendarItem extends React.Component {
+  render() {
+    const colourClassName = `calendar-item-colour-${this.props.perf.colourIndex}`
+    const leftPercent = this.props.minTime.diff(this.props.perf.start) / this.props.timeRange * 100
+    const widthPercent = this.props.perf.start.diff(this.props.perf.end) / this.props.timeRange * 100
+    const style = {
+      marginLeft: `${leftPercent}%`,
+      width: `${widthPercent}%`
+    }
+
+    const perfTime = `${this.props.perf.start.format('H:mm')} - ${this.props.perf.end.format('H:mm')}`
+    return <li
+      key={this.props.index}
+      style={style}
+      className={`calendar-item ${colourClassName}`}
+      title={perfTime}
+    >{this.props.perf.title}</li>
   }
 }
 
