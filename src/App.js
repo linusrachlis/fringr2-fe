@@ -6,7 +6,6 @@ import Calendar from './Calendar'
 import shows from './data'
 
 import './App.css'
-// const numColours = 17
 
 class App extends React.Component {
   constructor(props) {
@@ -14,7 +13,6 @@ class App extends React.Component {
 
     this.state = {
       selectedShows: [],
-
     }
 
     this.selectShow = this.selectShow.bind(this)
