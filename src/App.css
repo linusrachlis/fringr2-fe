@@ -7,29 +7,41 @@ ul.calendar {
   color: grey;
   padding: 2em;
   margin: 2em;
+}
+
+li.calendar-day {
   list-style: none;
+  margin: 0;
+  padding: 0;
+}
+li.calendar-day > ul {
+  margin: 0;
+  padding: 0;
+  display: block;
 }
 
 li.calendar-item {
-  border-radius: 3px;
+  list-style: none;
+  border-radius: .25em;
   margin: 0;
-  padding: 0;
+  padding: .25em;
+  display: block;
 }
 
 .calendar-item-colour-0 {
   background-color: maroon;
   color: white;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 .calendar-item-colour-1 {
   background-color: red;
   color: black;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .calendar-item-colour-2 {
   background-color: orange;
   color: black;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .calendar-item-colour-3 {
   background-color: yellow;
@@ -39,65 +51,65 @@ li.calendar-item {
 .calendar-item-colour-4 {
   background-color: olive;
   color: white;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 .calendar-item-colour-5 {
   background-color: green;
   color: white;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 .calendar-item-colour-6 {
   background-color: purple;
   color: white;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 .calendar-item-colour-7 {
   background-color: fuchsia;
   color: black;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .calendar-item-colour-8 {
   background-color: lime;
   color: black;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .calendar-item-colour-9 {
   background-color: teal;
   color: white;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 .calendar-item-colour-10 {
   background-color: aqua;
   color: black;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .calendar-item-colour-11 {
   background-color: blue;
   color: white;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 .calendar-item-colour-12 {
   background-color: navy;
   color: white;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 .calendar-item-colour-13 {
   background-color: black;
   color: white;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 .calendar-item-colour-14 {
   background-color: gray;
   color: white;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 .calendar-item-colour-15 {
   background-color: silver;
   color: black;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .calendar-item-colour-16 {
   background-color: white;
   color: black;
-  border: 1px solid black;
+  border: 1px solid grey;
 }
