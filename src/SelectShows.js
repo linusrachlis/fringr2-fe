@@ -36,7 +36,7 @@ class SelectShows extends React.Component {
               }
             })
             .map(show =>
-              <li onClick={_ => this.props.selectShow(show)} key={show.url}>{show.title}</li>)
+              <li onClick={() => this.props.selectShow(show)} key={show.url}>{show.title}</li>)
         }
       </ul>
     </div>

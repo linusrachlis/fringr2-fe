@@ -12,23 +12,29 @@ class Calendar extends React.Component {
     // Create chronologically ordered list of performances
     const days = []
     const perfsByDay = {}
-    this.props.selectedShows.forEach(show => {
+    this.props.selectedShows.forEach((show, showIndex) => {
+      const colourIndex = showIndex % numColours
+
       show.perfs.forEach(({ flags, start, end }) => {
         const startMoment = moment(start)
         const endMoment = moment(end)
         const dayString = startMoment.format('YYYY-MM-DD')
+
         if (!(dayString in perfsByDay)) {
           days.push(dayString)
           perfsByDay[dayString] = []
         }
+
         perfsByDay[dayString].push({
           title: show.title,
           flags,
           start: startMoment,
           end: endMoment,
+          colourIndex,
         })
       })
     })
+
     days.sort()
 
     return <ul className="calendar">
@@ -44,9 +50,7 @@ class Calendar extends React.Component {
           const timeRange = minTime.diff(maxTime) // NOTE always the same, ish
 
           const perfsRender = perfs.map((perf, index) => {
-            // TODO make colour code the show
-            const colourIndex = index % numColours
-            const colourClassName = `calendar-item-colour-${colourIndex}`
+            const colourClassName = `calendar-item-colour-${perf.colourIndex}`
             const leftPercent = minTime.diff(perf.start) / timeRange * 100
             const widthPercent = perf.start.diff(perf.end) / timeRange * 100
             const style = {
