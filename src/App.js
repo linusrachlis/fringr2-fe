@@ -12,22 +12,57 @@ class App extends React.Component {
 
     this.state = {
       selectedShows: [],
+      selectedPerfs: {},
     }
 
     this.selectShow = this.selectShow.bind(this)
     this.deselectShow = this.deselectShow.bind(this)
+    this.toggleSelectPerf = this.toggleSelectPerf.bind(this)
+    this.getPerfStatus = this.getPerfStatus.bind(this)
   }
 
   selectShow(show) {
     this.setState({
-      selectedShows: this.state.selectedShows.concat(show)
+      selectedShows: this.state.selectedShows.concat(show),
     })
   }
 
   deselectShow(show) {
     this.setState({
-      selectedShows: this.state.selectedShows.filter(eachShow => eachShow !== show)
+      selectedShows: this.state.selectedShows.filter(eachShow => eachShow !== show),
     })
+  }
+
+  toggleSelectPerf(perf) {
+    const { selectedPerfs } = this.state
+
+    if (
+      perf.showId in selectedPerfs &&
+      selectedPerfs[perf.showId] === perf.perfId
+    ) {
+      delete selectedPerfs[perf.showId]
+    } else {
+      selectedPerfs[perf.showId] = perf.perfId
+    }
+
+    this.setState({ selectedPerfs })
+  }
+
+  /**
+   * Returns 1 for selected, -1 for deselected, and 0 for initial state.
+   * @param {object} perf
+   * @returns number
+   */
+  getPerfStatus(perf) {
+    if (perf.showId in this.state.selectedPerfs) {
+      if (this.state.selectedPerfs[perf.showId] === perf.perfId) {
+        return 1
+      } else {
+        return -1
+      }
+    } else {
+      return 0
+    }
   }
 
   render() {
@@ -40,6 +75,9 @@ class App extends React.Component {
       />
       <Calendar
         selectedShows={this.state.selectedShows}
+        selectedPerfs={this.state.selectedPerfs}
+        toggleSelectPerf={this.toggleSelectPerf}
+        getPerfStatus={this.getPerfStatus}
       />
     </>
   }
