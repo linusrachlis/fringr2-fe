@@ -1,9 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import moment from 'moment'
+
+import { selectedShowsSelector, selectedPerfsSelector } from './selectors'
+import { toggleSelectPerf } from './actions'
 
 const numCssColours = 16
 
-class Calendar extends React.Component {
+class UnconnectedCalendar extends React.Component {
   render() {
     if (this.props.selectedShows.length === 0) {
       return null
@@ -77,23 +81,21 @@ class Calendar extends React.Component {
           perfsByDay,
           minStartTime,
           timeRange,
-          toggleSelectPerf: this.props.toggleSelectPerf,
-          getPerfStatus: this.props.getPerfStatus,
         }} />)}
     </ul>
   }
 }
 
-class CalendarDay extends React.Component {
+class UnconnectedCalendarDay extends React.Component {
   render() {
     const perfs = this.props.perfsByDay[this.props.dayString]
     perfs.sort((a, b) => (a.startString < b.startString) ? -1 : ((b.startString < a.startString) ? 1 : 0))
 
-    const { minStartTime, timeRange, toggleSelectPerf, getPerfStatus } = this.props
+    const { minStartTime, timeRange } = this.props
 
     const renderedPerfs = perfs.map((perf, index) =>
       <CalendarItem
-        {...{ key: index, perf, minStartTime, timeRange, toggleSelectPerf, getPerfStatus }}
+        {...{ key: index, perf, minStartTime, timeRange }}
       />
     )
 
@@ -104,7 +106,26 @@ class CalendarDay extends React.Component {
   }
 }
 
-class CalendarItem extends React.Component {
+class UnconnectedCalendarItem extends React.Component {
+
+  /**
+   * @TODO convert to selector and use enum instead of magic numbers
+   * Returns 1 for selected, -1 for deselected, and 0 for initial state.
+   * @param {object} perf
+   * @returns number
+   */
+  getPerfStatus(perf) {
+    if (perf.showId in this.props.selectedPerfs) {
+      if (this.props.selectedPerfs[perf.showId] === perf.perfId) {
+        return 1
+      } else {
+        return -1
+      }
+    } else {
+      return 0
+    }
+  }
+
   render() {
     const leftPercent = this.props.perf.startTime.diff(this.props.minStartTime) / this.props.timeRange * 100
     const widthPercent = this.props.perf.endTime.diff(this.props.perf.startTime) / this.props.timeRange * 100
@@ -116,7 +137,7 @@ class CalendarItem extends React.Component {
 
     const colourClassName = `calendar-item-colour-${this.props.perf.colourIndex}`
     const classNames = ['calendar-item', colourClassName]
-    const perfStatus = this.props.getPerfStatus(this.props.perf)
+    const perfStatus = this.getPerfStatus(this.props.perf)
 
     if (perfStatus === 1) {
       classNames.push('calendar-item-selected')
@@ -133,5 +154,18 @@ class CalendarItem extends React.Component {
     ><h3>{this.props.perf.title}</h3></li>
   }
 }
+
+const mapStateToProps = state => ({
+  selectedShows: selectedShowsSelector(state),
+  selectedPerfs: selectedPerfsSelector(state),
+})
+
+const mapDispatchToProps = dispatch => ({
+  toggleSelectPerf: perf => dispatch(toggleSelectPerf(perf)),
+})
+
+const Calendar = connect(mapStateToProps, mapDispatchToProps)(UnconnectedCalendar)
+const CalendarDay = connect(mapStateToProps, mapDispatchToProps)(UnconnectedCalendarDay)
+const CalendarItem = connect(mapStateToProps, mapDispatchToProps)(UnconnectedCalendarItem)
 
 export default Calendar

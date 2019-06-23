@@ -1,6 +1,12 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-class SelectShows extends React.Component {
+import { selectedShowsSelector } from './selectors'
+import { selectShow, deselectShow } from './actions'
+
+import shows from './data'
+
+class UnconnectedSelectShows extends React.Component {
   constructor(props) {
     super(props)
 
@@ -27,7 +33,7 @@ class SelectShows extends React.Component {
       <label>Filter by title: <input type="text" onChange={this.updateShowSearch} /></label>
       <ul>
         {
-          this.props.shows
+          shows
             .filter(show => {
               if (this.props.selectedShows.includes(show)) return false
               else if (this.state.searchInput === '') return true
@@ -42,5 +48,16 @@ class SelectShows extends React.Component {
     </div>
   }
 }
+
+const mapStateToProps = state => ({
+  selectedShows: selectedShowsSelector(state),
+})
+
+const mapDispatchToProps = dispatch => ({
+  selectShow: show => dispatch(selectShow(show)),
+  deselectShow: show => dispatch(deselectShow(show)),
+})
+
+const SelectShows = connect(mapStateToProps, mapDispatchToProps)(UnconnectedSelectShows)
 
 export default SelectShows

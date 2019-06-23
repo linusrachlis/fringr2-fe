@@ -2,12 +2,13 @@
 
 ## Must have
 
+* Add show flags
+* Add performance flags
 * Button on calendar-item: open play page
 * Time markers
 * Export to ical
 * Better colours (and further distinction for colour-blindness)
 * Save selected shows and selected perfs to localStorage
-* Use Redux
 * Better design
   + Apply CSS framework?
   + Put selection in hide-able sidebar
@@ -15,6 +16,7 @@
 
 ## Would be nice
 
+* Indicate a show you haven't scheduled yet
 * Export selections to file and import from upload
 * Warn if you select overlapping (or close?) performances
 * Button on calendar-item: show popup venue map
