@@ -6,10 +6,10 @@ import Calendar from './Calendar'
 import './App.css'
 
 function App(props) {
-  return <>
+  return <div class="app">
     <SelectShows />
     <Calendar />
-  </>
+  </div>
 }
 
 export default App
