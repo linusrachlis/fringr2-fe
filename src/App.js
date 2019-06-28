@@ -6,7 +6,7 @@ import Calendar from './Calendar'
 import './App.css'
 
 function App(props) {
-  return <div class="app">
+  return <div className="app">
     <SelectShows />
     <Calendar />
   </div>

@@ -10,15 +10,20 @@ export const rootReducer = combineReducers({
   selectedPerfs,
 })
 
-function selectedShows(state = [], action) {
+  let newState
   switch (action.type) {
     case SELECT_SHOW:
-      return state.concat(action.show)
+      newState = state.concat(action.show)
+      break
     case DESELECT_SHOW:
-      return state.filter(eachShow => eachShow !== action.show)
+      newState = state.filter(eachShow => eachShow !== action.show)
+      break
     default:
-      return state
+      newState = state
+      break
   }
+  newState.sort((a, b) => b.title.toLowerCase() < a.title.toLowerCase())
+  return newState
 }
 
 function selectedPerfs(state = {}, action) {

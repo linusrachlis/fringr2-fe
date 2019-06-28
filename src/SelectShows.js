@@ -21,54 +21,39 @@ class UnconnectedSelectShows extends React.Component {
     this.setState({ searchInput: e.target.value.toLowerCase() })
   }
 
-  renderSelected() {
-    if (this.props.selectedShows.length > 0) {
-      return <>
-        <h2>Selected</h2>
-        <ul className="selected-shows">
-          {
-            this.props.selectedShows
-              .map(show =>
-                <li onClick={() => this.props.deselectShow(show)} key={show.id}>{show.title}</li>)
-          }
-        </ul>
-      </>
-    } else {
-      return null
-    }
+  changeShowSelected(show, isSelected) {
+    if (isSelected) this.props.selectShow(show)
+    else this.props.deselectShow(show)
   }
 
-  renderUnselected() {
-    const unselectedShows = shows
-      .filter(show => {
-        if (this.props.selectedShows.includes(show)) return false
-        else if (this.state.searchInput === '') return true
-        else {
-          return ~show.title.toLowerCase().indexOf(this.state.searchInput)
-        }
-      })
-
-    if (unselectedShows.length > 0) {
-      return <>
-        <h2>Unselected</h2>
-        <label>Filter by title: <input type="text" onChange={this.updateShowSearch} /></label>
-        <ul className="unselected-shows">
-          {
-            unselectedShows
-              .map(show =>
-                <li onClick={() => this.props.selectShow(show)} key={show.id}>{show.title}</li>)
-          }
-        </ul>
-      </>
-    } else {
+  renderShow(show, isSelected) {
+    if (
+      this.state.searchInput !== '' &&
+      show.title.toLowerCase().indexOf(this.state.searchInput) === -1
+    ) {
       return null
     }
+
+    return <li key={show.id}>
+      <input
+        type="checkbox"
+        checked={isSelected}
+        onChange={e => this.changeShowSelected(show, e.target.checked)}
+      />
+      <a href={show.url} target="_blank" rel="noopener noreferrer">{show.title}</a>
+    </li>
   }
 
   render() {
     return <div className="select-shows">
-      {this.renderSelected()}
-      {this.renderUnselected()}
+      <h2>Show Selection</h2>
+      <label>Filter by title: <input type="text" onChange={this.updateShowSearch} /></label>
+      <ul>
+        {this.props.selectedShows.map(show => this.renderShow(show, true))}
+        {shows
+          .filter(show => !this.props.selectedShows.includes(show))
+          .map(show => this.renderShow(show, false))}
+      </ul>
     </div>
   }
 }
