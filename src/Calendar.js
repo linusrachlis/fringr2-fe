@@ -192,11 +192,12 @@ function UnconnectedCalendarItem(props) {
           title="Official web page">🌐</span>
       </a>
       {
-        props.perf.flags.map(flag => {
+        props.perf.flags.map((flag, index) => {
           if (!(flag in flagsKey)) return null
           const flagOutput = flagsKey[flag]
 
           return <span
+            key={index}
             role="img"
             aria-label={flagOutput.label}
             title={flagOutput.label}
