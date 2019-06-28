@@ -57,6 +57,9 @@ function UnconnectedCalendar(props) {
         showId: show.id,
         perfId,
         flags,
+        url: show.url,
+        venue: show.venue,
+        address: show.address,
         startString,
         endString,
         start,
@@ -102,6 +105,42 @@ function UnconnectedCalendarDay(props) {
   </li>
 }
 
+const flagsKey = {
+  'assisted-hearing': {
+    emoji: '👂',
+    label: 'Assisted Hearing',
+  },
+  'audio-description': {
+    emoji: '💬',
+    label: 'Audio Description',
+  },
+  'relaxed': {
+    emoji: '🤗',
+    label: 'Relaxed Performance',
+  },
+  'asl': {
+    emoji: '👌',
+    label: 'ASL',
+  },
+  'tad': {
+    emoji: '📳',
+    label: 'TAD Seating',
+  },
+  'touch-book': {
+    emoji: '📖',
+    label: 'Touch Book',
+  },
+  'touch-tour': {
+    emoji: '🖐',
+    label: 'Touch Tour',
+  },
+}
+
+function buildMapUrl(venue, address) {
+  const encodedQuery = encodeURIComponent(`${venue}, ${address}`)
+  return `https://www.google.com/maps/search/?api=1&query=${encodedQuery}`
+}
+
 function UnconnectedCalendarItem(props) {
   const leftPercent = props.perf.startTime.diff(props.minStartTime) / props.timeRange * 100
   const widthPercent = props.perf.endTime.diff(props.perf.startTime) / props.timeRange * 100
@@ -129,9 +168,43 @@ function UnconnectedCalendarItem(props) {
   return <li
     style={style}
     className={classNames.join(' ')}
-    title={perfTime}
-    onClick={() => props.toggleSelectPerf(props.perf)}
-  ><h3>{props.perf.title}</h3></li>
+  >
+    <h3
+      onClick={() => props.toggleSelectPerf(props.perf)}
+      title={perfTime}
+    >
+      {props.perf.title}
+    </h3>
+    <p aria-label="Venue Map Link">
+      <a
+        href={buildMapUrl(props.perf.venue, props.perf.address)}
+        title={props.perf.address}
+        target="_blank"
+        rel="noopener noreferrer">
+        {props.perf.venue}
+      </a>
+    </p>
+    <p>
+      <a href={props.perf.url} target="_blank" rel="noopener noreferrer">
+        <span
+          role="img"
+          aria-label="Official web page"
+          title="Official web page">🌐</span>
+      </a>
+      {
+        props.perf.flags.map(flag => {
+          if (!(flag in flagsKey)) return null
+          const flagOutput = flagsKey[flag]
+
+          return <span
+            role="img"
+            aria-label={flagOutput.label}
+            title={flagOutput.label}
+          >{flagOutput.emoji}</span>
+        })
+      }
+    </p>
+  </li>
 }
 
 

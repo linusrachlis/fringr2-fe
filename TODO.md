@@ -3,8 +3,6 @@
 ## Must have
 
 * Add show flags
-* Add performance flags
-* Button on calendar-item: open play page
 * Time markers
 * Export to ical
 * Better colours (and further distinction for colour-blindness)
@@ -16,6 +14,7 @@
 
 ## Would be nice
 
+* Button to expand/collapse additional info for all calendar items
 * Indicate a show you haven't scheduled yet
 * Export selections to file and import from upload
 * Warn if you select overlapping (or close?) performances

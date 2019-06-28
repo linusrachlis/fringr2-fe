@@ -26,26 +26,35 @@ li.calendar-item {
   margin: .5em;
   padding: 0;
   display: block;
-  opacity: .4;
   border-width: .125em;
   border-style: dashed;
   border-color: black;
+  font-size: 12px;
+}
+li.calendar-item a {
+  text-decoration: none;
+}
+li.calendar-item p {
+  margin: .25em;
 }
 li.calendar-item h3 {
+  opacity: .4;
   margin: 0;
   font: inherit;
   padding: .2em;
+  cursor: pointer;
+  font-size: 14px;
 }
 li.calendar-item-selected {
-  opacity: 1;
   border-style: solid;
   border-color: black;
 }
+li.calendar-item-selected h3 { opacity: 1; }
 li.calendar-item-deselected {
-  opacity: 0.15;
   border-style: solid;
   border-color: transparent;
 }
+li.calendar-item-deselected h3 { opacity: 0.15; }
 
 .calendar-item-colour-0 h3 {
   background-color: maroon;
