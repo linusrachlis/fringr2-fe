@@ -24,3 +24,5 @@
 * Magically compute unique colour from play title
 * Indicate if a show is sold out (requires backend service constantly updating, or on-demand fetch and crawl from FE code)
 * Restrict show times you're interested in
+* Ability to share your gcal so it can be overlaid on the UI?
+  + Either through URL or by exporting ical from gcal?
