@@ -6,6 +6,8 @@ import { selectShow, deselectShow } from './actions'
 
 import shows from './data'
 
+import './styles/SelectShows.css'
+
 class UnconnectedSelectShows extends React.Component {
   constructor(props) {
     super(props)

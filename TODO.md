@@ -1,9 +1,12 @@
 # TODO
 
+## Tech debt
+
+* Simplify calendar item style to mostly use opacity to indicate selection, except border style and text line-through
+
 ## Must have
 
 * Add show flags
-* Time markers
 * Export to ical
 * Better colours (and further distinction for colour-blindness)
 * Save selected shows and selected perfs to localStorage
@@ -14,6 +17,8 @@
 
 ## Would be nice
 
+* Undo (d'oh, I didn't mean to select that one and now I lost the selection I wanted)
+  - Or confirm switching selection if show is already scheduled
 * Button to expand/collapse additional info for all calendar items
 * Indicate a show you haven't scheduled yet
 * Export selections to file and import from upload

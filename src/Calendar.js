@@ -136,47 +136,51 @@ function UnconnectedCalendarItem(props) {
   }
   // Else, none is selected
 
-  const perfTime = `${props.perf.start.format('H:mm')} - ${props.perf.end.format('H:mm')}`
+  const start = props.perf.start.format('h:mma')
+  const end = props.perf.end.format('h:mma')
   return <li
     style={style}
     className={classNames.join(' ')}
   >
-    <h3
-      onClick={() => props.toggleSelectPerf(props.perf)}
-      title={perfTime}
-    >
-      {props.perf.title}
-    </h3>
-    <p aria-label="Venue Map Link">
-      <a
-        href={buildMapUrl(props.perf.venue, props.perf.address)}
-        title={props.perf.address}
-        target="_blank"
-        rel="noopener noreferrer">
-        {props.perf.venue}
-      </a>
-    </p>
-    <p>
-      <a href={props.perf.url} target="_blank" rel="noopener noreferrer">
-        <span
-          role="img"
-          aria-label="Official web page"
-          title="Official web page">🌐</span>
-      </a>
-      {
-        props.perf.flags.map((flag, index) => {
-          if (!(flag in flagsKey)) return null
-          const flagOutput = flagsKey[flag]
-
-          return <span
-            key={index}
+    <div class="start time">{start}</div>
+    <div class="box">
+      <h3
+        onClick={() => props.toggleSelectPerf(props.perf)}
+      >
+        {props.perf.title}
+      </h3>
+      <p aria-label="Venue Map Link">
+        <a
+          href={buildMapUrl(props.perf.venue, props.perf.address)}
+          title={props.perf.address}
+          target="_blank"
+          rel="noopener noreferrer">
+          {props.perf.venue}
+        </a>
+      </p>
+      <p>
+        <a href={props.perf.url} target="_blank" rel="noopener noreferrer">
+          <span
             role="img"
-            aria-label={flagOutput.label}
-            title={flagOutput.label}
-          >{flagOutput.emoji}</span>
-        })
-      }
-    </p>
+            aria-label="Official web page"
+            title="Official web page">🌐</span>
+        </a>
+        {
+          props.perf.flags.map((flag, index) => {
+            if (!(flag in flagsKey)) return null
+            const flagOutput = flagsKey[flag]
+
+            return <span
+              key={index}
+              role="img"
+              aria-label={flagOutput.label}
+              title={flagOutput.label}
+            >{flagOutput.emoji}</span>
+          })
+        }
+      </p>
+    </div>
+    <div class="end time">{end}</div>
   </li>
 }
 
