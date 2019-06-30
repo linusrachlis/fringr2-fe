@@ -4,6 +4,9 @@ import moment from 'moment'
 
 import { selectedShowsSelector, selectedPerfsSelector } from './selectors'
 import { toggleSelectPerf } from './actions'
+import flagsKey from './flagsKey'
+
+import './styles/Calendar.css'
 
 const numCssColours = 16
 
@@ -103,37 +106,6 @@ function UnconnectedCalendarDay(props) {
     <h2>{props.dayString}</h2>
     <ul>{renderedPerfs}</ul>
   </li>
-}
-
-const flagsKey = {
-  'assisted-hearing': {
-    emoji: '👂',
-    label: 'Assisted Hearing',
-  },
-  'audio-description': {
-    emoji: '💬',
-    label: 'Audio Description',
-  },
-  'relaxed': {
-    emoji: '🤗',
-    label: 'Relaxed Performance',
-  },
-  'asl': {
-    emoji: '👌',
-    label: 'ASL',
-  },
-  'tad': {
-    emoji: '📳',
-    label: 'TAD Seating',
-  },
-  'touch-book': {
-    emoji: '📖',
-    label: 'Touch Book',
-  },
-  'touch-tour': {
-    emoji: '🖐',
-    label: 'Touch Tour',
-  },
 }
 
 function buildMapUrl(venue, address) {
