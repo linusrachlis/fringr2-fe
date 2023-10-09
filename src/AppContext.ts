@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 
-export const AppContext = createContext(null);
-export const AppDispatchContext = createContext(null);
+export const AppContext = createContext({});
+export const AppDispatchContext = createContext({});
 
 export function useAppState() {
   return useContext(AppContext);

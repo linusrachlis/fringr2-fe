@@ -7,11 +7,11 @@ import Calendar from './Calendar.tsx'
 import './styles/App.css'
 
 function AppProvider({ children }) {
-  const [tasks, dispatch] = useReducer(appReducer, initialState);
+  const [appState, appDispatch] = useReducer(appReducer, initialState);
 
   return (
-    <AppContext.Provider value={tasks}>
-      <AppDispatchContext.Provider value={dispatch}>
+    <AppContext.Provider value={appState}>
+      <AppDispatchContext.Provider value={appDispatch}>
         {children}
       </AppDispatchContext.Provider>
     </AppContext.Provider>
