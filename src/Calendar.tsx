@@ -1,32 +1,38 @@
-import React from 'react'
 import moment from 'moment'
-
-import flagsKey from './data/flagsKey.js'
-
+import flagsKey from './data/flagsKey.ts'
 import './styles/Calendar.css'
 import {
-    TOGGLE_SELECT_PERF,
-    useAppDispatch,
-    useAppState,
-} from './AppContext.js'
+    PerformanceData,
+    PerformanceToRender,
+    PerformancesByDay,
+    SelectedPerfs,
+    SelectedShows,
+} from './types.ts'
 
 const numCssColours = 16
 
-export default function Calendar() {
-    const appState = useAppState()
-    if (appState.selectedShows.length === 0) {
+export default function Calendar({
+    selectedShows,
+    selectedPerfs,
+    toggleSelectPerf,
+}: {
+    selectedShows: SelectedShows
+    selectedPerfs: SelectedPerfs
+    toggleSelectPerf: (perf: Performance) => void
+}) {
+    if (selectedShows.length === 0) {
         return null
     }
 
     // Create chronologically ordered list of performances
-    const days = []
-    const perfsByDay = {}
+    const days: string[] = []
+    const perfsByDay: PerformancesByDay = {}
 
     const referenceStartOfDay = moment().startOf('day')
-    let minStartTime
-    let maxEndTime
+    let minStartTime: undefined | moment.Moment
+    let maxEndTime: undefined | moment.Moment
 
-    appState.selectedShows.forEach((show) => {
+    selectedShows.forEach((show) => {
         show.perfs.forEach(
             ({ id: perfId, flags, start: startString, end: endString }) => {
                 const start = moment(startString)
@@ -80,7 +86,9 @@ export default function Calendar() {
         )
     })
 
-    const timeRange = maxEndTime.diff(minStartTime)
+    // NOTE: we already return early if selectedShows.length === 0, so by this
+    // point we know that minStartTime and maxEndTime are set to something.
+    const timeRange = maxEndTime!.diff(minStartTime!)
 
     days.sort()
 
@@ -92,8 +100,10 @@ export default function Calendar() {
                         key: dayString,
                         dayString,
                         perfsByDay,
-                        minStartTime,
+                        minStartTime: minStartTime!,
                         timeRange,
+                        selectedPerfs,
+                        toggleSelectPerf,
                     }}
                 />
             ))}
@@ -101,8 +111,22 @@ export default function Calendar() {
     )
 }
 
-function CalendarDay(props) {
-    const perfs = props.perfsByDay[props.dayString]
+function CalendarDay({
+    perfsByDay,
+    dayString,
+    minStartTime,
+    timeRange,
+    selectedPerfs,
+    toggleSelectPerf,
+}: {
+    perfsByDay: PerformancesByDay
+    dayString: string
+    minStartTime: moment.Moment
+    timeRange: number
+    selectedPerfs: SelectedPerfs
+    toggleSelectPerf: (perf: PerformanceData) => void
+}) {
+    const perfs = perfsByDay[dayString]
     perfs.sort((a, b) =>
         a.startString < b.startString
             ? -1
@@ -111,44 +135,59 @@ function CalendarDay(props) {
             : 0
     )
 
-    const { minStartTime, timeRange } = props
-
     const renderedPerfs = perfs.map((perf, index) => (
-        <CalendarItem {...{ key: index, perf, minStartTime, timeRange }} />
+        <CalendarItem
+            {...{
+                key: index,
+                perf,
+                minStartTime,
+                timeRange,
+                toggleSelectPerf,
+                selectedPerfs,
+            }}
+        />
     ))
 
     return (
-        <li key={props.dayString} className="calendar-day">
-            <h2>{props.dayString}</h2>
+        <li key={dayString} className="calendar-day">
+            <h2>{dayString}</h2>
             <ul>{renderedPerfs}</ul>
         </li>
     )
 }
 
-function buildMapUrl(venue, address) {
+function buildMapUrl(venue: string, address: string) {
     const encodedQuery = encodeURIComponent(`${venue}, ${address}`)
     return `https://www.google.com/maps/search/?api=1&query=${encodedQuery}`
 }
 
-function CalendarItem(props) {
-    const appState = useAppState()
-    const appDispatch = useAppDispatch()
-
-    const leftPercent =
-        (props.perf.startTime.diff(props.minStartTime) / props.timeRange) * 100
-    const widthPercent =
-        (props.perf.endTime.diff(props.perf.startTime) / props.timeRange) * 100
+function CalendarItem({
+    perf,
+    minStartTime,
+    timeRange,
+    selectedPerfs,
+    toggleSelectPerf,
+}: {
+    perf: PerformanceToRender
+    minStartTime: moment.Moment
+    selectedPerfs: SelectedPerfs
+    timeRange: number
+    toggleSelectPerf: (perf: PerformanceData) => void
+}) {
+    const leftPercent = (perf.startTime.diff(minStartTime) / timeRange) * 100
+    const widthPercent = (perf.endTime.diff(perf.startTime) / timeRange) * 100
 
     const style = {
         marginLeft: `${leftPercent}%`,
         width: `${widthPercent}%`,
     }
 
-    const colourClassName = `calendar-item-colour-${props.perf.colourIndex}`
+    const colourClassName = `calendar-item-colour-${perf.colourIndex}`
     const classNames = ['calendar-item', colourClassName]
 
-    if (props.perf.showId in appState.selectedPerfs) {
-        if (appState.selectedPerfs[props.perf.showId] === props.perf.perfId) {
+    if (perf.showId in selectedPerfs) {
+        // FIXME I added '.id' here, does that work? Why did it work before??
+        if (selectedPerfs[perf.showId].id === perf.perfId) {
             // This one is selected
             classNames.push('calendar-item-selected')
         } else {
@@ -158,35 +197,26 @@ function CalendarItem(props) {
     }
     // Else, none is selected
 
-    const start = props.perf.start.format('h:mma')
-    const end = props.perf.end.format('h:mma')
+    const start = perf.start.format('h:mma')
+    const end = perf.end.format('h:mma')
     return (
         <li style={style} className={classNames.join(' ')}>
             <div className="start time">{start}</div>
             <div className="box">
-                <h3
-                    onClick={() =>
-                        appDispatch({
-                            type: TOGGLE_SELECT_PERF,
-                            perf: props.perf,
-                        })
-                    }
-                >
-                    {props.perf.title}
-                </h3>
+                <h3 onClick={() => toggleSelectPerf(perf)}>{perf.title}</h3>
                 <p aria-label="Venue Map Link">
                     <a
-                        href={buildMapUrl(props.perf.venue, props.perf.address)}
-                        title={props.perf.address}
+                        href={buildMapUrl(perf.venue, perf.address)}
+                        title={perf.address}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        {props.perf.venue}
+                        {perf.venue}
                     </a>
                 </p>
                 <p>
                     <a
-                        href={props.perf.url}
+                        href={perf.url}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -198,7 +228,7 @@ function CalendarItem(props) {
                             🌐
                         </span>
                     </a>
-                    {props.perf.flags.map((flag, index) => {
+                    {perf.flags.map((flag, index) => {
                         if (!(flag in flagsKey)) return null
                         const flagOutput = flagsKey[flag]
 

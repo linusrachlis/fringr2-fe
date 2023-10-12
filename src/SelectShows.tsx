@@ -1,30 +1,29 @@
-import React, { useState } from 'react'
-
-import shows from './data/shows.js'
-
+import { ChangeEvent, useState } from 'react'
+import shows from './data/shows.ts'
 import './styles/SelectShows.css'
-import {
-    DESELECT_SHOW,
-    SELECT_SHOW,
-    useAppDispatch,
-    useAppState,
-} from './AppContext'
+import { SelectedShows, Show } from './types.ts'
 
-export default function SelectShows() {
+export default function SelectShows({
+    selectedShows,
+    selectShow,
+    deselectShow,
+}: {
+    selectedShows: SelectedShows
+    selectShow: (show: Show) => void
+    deselectShow: (show: Show) => void
+}) {
     const [searchInput, updateSearchInput] = useState('')
-    const appState = useAppState()
-    const appDispatch = useAppDispatch()
 
-    function updateShowSearch(e) {
+    function updateShowSearch(e: ChangeEvent<HTMLInputElement>) {
         updateSearchInput(e.target.value.toLowerCase())
     }
 
-    function changeShowSelected(show, isSelected) {
-        if (isSelected) appDispatch({ type: SELECT_SHOW, show })
-        else appDispatch({ type: DESELECT_SHOW, show })
+    function changeShowSelected(show: Show, isSelected: boolean) {
+        if (isSelected) selectShow(show)
+        else deselectShow(show)
     }
 
-    function renderShow(show, isSelected) {
+    function renderShow(show: Show, isSelected: boolean) {
         if (
             searchInput !== '' &&
             show.title.toLowerCase().indexOf(searchInput) === -1
@@ -38,7 +37,6 @@ export default function SelectShows() {
                     type="checkbox"
                     checked={isSelected}
                     onChange={(e) => {
-                        console.log(e)
                         changeShowSelected(show, e.target.checked)
                     }}
                 />
@@ -57,9 +55,9 @@ export default function SelectShows() {
                 <input type="text" onChange={updateShowSearch} />
             </label>
             <ul>
-                {appState.selectedShows.map((show) => renderShow(show, true))}
+                {selectedShows.map((show) => renderShow(show, true))}
                 {shows
-                    .filter((show) => !appState.selectedShows.includes(show))
+                    .filter((show) => !selectedShows.includes(show))
                     .map((show) => renderShow(show, false))}
             </ul>
         </div>
