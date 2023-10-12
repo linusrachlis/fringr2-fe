@@ -1,27 +1,13 @@
-# React + TypeScript + Vite
+# Fringr
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An easier way to Fringe more: select the shows you want to see, and get a visual planner to help you fit them all in!
 
-Currently, two official plugins are available:
+> Note: the current show data is from the 2019 Toronto Fringe Festival. I'm working on updating it for the [Next Stage Festival](https://fringetoronto.com/next-stage/about) (October 18-29, 2023). The next [Toronto Fringe Festival](https://fringetoronto.com/fringe/about) will be July 3-14, 2024.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Screenshot](screenshot.png)
 
-## Expanding the ESLint configuration
+Suggested workflow:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Select the shows you want to attend on the left.
+2. Begin clicking performance times that work for you, and scrolling down the page on the right. You can see visually how much time there is between performances. Make sure to leave yourself enough travel time between venues :)
+3. Keep going down the page and looking for performances with a **dashed border**. That means you have not yet selected a performance for that show. Ignore performances that are **struck-through**. That means you have already selected a performance for that show.
