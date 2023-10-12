@@ -1,141 +1,143 @@
 ul.calendar {
-  overflow-y: scroll;
-  color: grey;
-  padding: 2em;
-  margin: 0;
+    overflow-y: scroll;
+    color: grey;
+    padding: 2em;
+    margin: 0;
 }
 
 li.calendar-day {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 li.calendar-day > ul {
-  margin: 0;
-  padding: 0;
-  display: block;
+    margin: 0;
+    padding: 0;
+    display: block;
 }
 
 li.calendar-item {
-  font-size: 12px;
-  list-style: none;
-  margin: .5em;
-  padding: 0;
-  display: block;
+    font-size: 12px;
+    list-style: none;
+    margin: 0.5em;
+    padding: 0;
+    display: block;
 }
 li.calendar-item .time {
-  color: #999;
-  padding: .3em;
-  border-style: dashed;
-  border-color: #999;
- }
+    color: #999;
+    padding: 0.3em;
+    border-style: dashed;
+    border-color: #999;
+}
 li.calendar-item .start {
-  border-width: 0 0 0 .125em;
-  text-align: left;
+    border-width: 0 0 0 0.125em;
+    text-align: left;
 }
 li.calendar-item .end {
-  border-width: 0 .125em 0 0;
-  text-align: right;
+    border-width: 0 0.125em 0 0;
+    text-align: right;
 }
 li.calendar-item .box {
-  border-radius: .25em;
-  border-width: .125em;
-  border-style: dashed;
-  border-color: #999;
+    border-radius: 0.25em;
+    border-width: 0.125em;
+    border-style: dashed;
+    border-color: #999;
 }
 li.calendar-item a {
-  text-decoration: none;
+    text-decoration: none;
 }
 li.calendar-item p {
-  margin: .25em;
+    margin: 0.25em;
 }
 li.calendar-item h3 {
-  opacity: .6;
-  margin: 0;
-  font: inherit;
-  padding: .2em;
-  cursor: pointer;
-  font-size: 14px;
+    opacity: 0.6;
+    margin: 0;
+    font: inherit;
+    padding: 0.2em;
+    cursor: pointer;
+    font-size: 14px;
 }
 li.calendar-item-selected .box,
 li.calendar-item-selected .time {
-  border-style: solid;
-  border-color: black;
-  color: black;
+    border-style: solid;
+    border-color: black;
+    color: black;
 }
-li.calendar-item-selected h3 { opacity: 1; }
+li.calendar-item-selected h3 {
+    opacity: 1;
+}
 li.calendar-item-deselected .box,
 li.calendar-item-deselected .time {
-  border-style: solid;
-  border-color: #ccc;
-  color: #ccc;
+    border-style: solid;
+    border-color: #ccc;
+    color: #ccc;
 }
 li.calendar-item-deselected h3 {
-  opacity: 0.2;
-  text-decoration: line-through;
+    opacity: 0.2;
+    text-decoration: line-through;
 }
 
 .calendar-item-colour-0 h3 {
-  background-color: maroon;
-  color: white;
+    background-color: maroon;
+    color: white;
 }
 .calendar-item-colour-1 h3 {
-  background-color: red;
-  color: black;
+    background-color: red;
+    color: black;
 }
 .calendar-item-colour-2 h3 {
-  background-color: orange;
-  color: black;
+    background-color: orange;
+    color: black;
 }
 .calendar-item-colour-3 h3 {
-  background-color: yellow;
-  color: black;
+    background-color: yellow;
+    color: black;
 }
 .calendar-item-colour-4 h3 {
-  background-color: olive;
-  color: white;
+    background-color: olive;
+    color: white;
 }
 .calendar-item-colour-5 h3 {
-  background-color: green;
-  color: white;
+    background-color: green;
+    color: white;
 }
 .calendar-item-colour-6 h3 {
-  background-color: purple;
-  color: white;
+    background-color: purple;
+    color: white;
 }
 .calendar-item-colour-7 h3 {
-  background-color: fuchsia;
-  color: black;
+    background-color: fuchsia;
+    color: black;
 }
 .calendar-item-colour-8 h3 {
-  background-color: lime;
-  color: black;
+    background-color: lime;
+    color: black;
 }
 .calendar-item-colour-9 h3 {
-  background-color: teal;
-  color: white;
+    background-color: teal;
+    color: white;
 }
 .calendar-item-colour-10 h3 {
-  background-color: aqua;
-  color: black;
+    background-color: aqua;
+    color: black;
 }
 .calendar-item-colour-11 h3 {
-  background-color: blue;
-  color: white;
+    background-color: blue;
+    color: white;
 }
 .calendar-item-colour-12 h3 {
-  background-color: navy;
-  color: white;
+    background-color: navy;
+    color: white;
 }
 .calendar-item-colour-13 h3 {
-  background-color: black;
-  color: white;
+    background-color: black;
+    color: white;
 }
 .calendar-item-colour-14 h3 {
-  background-color: gray;
-  color: white;
+    background-color: gray;
+    color: white;
 }
 .calendar-item-colour-15 h3 {
-  background-color: silver;
-  color: black;
+    background-color: silver;
+    color: black;
 }
