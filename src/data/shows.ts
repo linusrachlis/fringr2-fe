@@ -1,13 +1,14 @@
-import { ShowWithPerformances } from '../types.ts'
+import moment from 'moment'
+import { ShowData, Performance } from '../types'
 
-const shows: ShowWithPerformances[] = [
+const showsData: ShowData[] = [
     {
         title: 'Above & Beyond',
         url: 'https://fringetoronto.com/fringe/show/above-beyond',
         venue: 'Robert Gill Theatre',
         address: '3rd Floor, 214 College St, Toronto, Ontario, M5T 2Z9',
         id: 0,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -58,7 +59,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Backspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 1,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['relaxed'],
@@ -115,7 +116,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Extraspace',
         address: '30 Bridgman Ave, Ontario, M5R 1X3',
         id: 2,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -166,7 +167,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Backspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 3,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -223,7 +224,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'St. Vladimir Institute',
         address: '620 Spadina Ave, Toronto, Ontario, M5S 2H4',
         id: 4,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -274,7 +275,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'The Tranzac Club Tiki Room',
         address: '292 Brunswick Ave, Tiki Room, Toronto, Ontario, M5S 2M7',
         id: 5,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -343,7 +344,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Annex Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 6,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -394,7 +395,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Robert Gill Theatre',
         address: '3rd Floor, 214 College St, Toronto, Ontario, M5T 2Z9',
         id: 7,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -445,7 +446,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Mainspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 8,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -496,7 +497,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Mainspace',
         address: '30 Bridgman Ave, Toronto, Ontario, M5R 1X3',
         id: 9,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -547,7 +548,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Solo Room',
         address: '30 Bridgman Ave, Toronto, Ontario, M5R 1X3',
         id: 10,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -604,7 +605,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Mainspace',
         address: '30 Bridgman Ave, Toronto, Ontario, M5R 1X3',
         id: 11,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -655,7 +656,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'St. Vladimir Institute',
         address: '620 Spadina Ave, Toronto, Ontario, M5S 2H4',
         id: 12,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -706,7 +707,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Randolph Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 13,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -757,7 +758,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Helen Gardiner Phelan Playhouse',
         address: '79A Saint George St, Toronto, Ontario, M5S 3L8',
         id: 14,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -808,7 +809,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Scadding Court Community Centre, Room 4',
         address: '707 Dundas St W,, Toronto, Ontario, M5V 3A8',
         id: 15,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -883,7 +884,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Mainspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 16,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -934,7 +935,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Factory Theatre Mainspace',
         address: '125 Bathurst St, Toronto, Ontario, M5V 2R2',
         id: 17,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -985,7 +986,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'St. Vladimir Institute',
         address: '620 Spadina Ave, Toronto, Ontario, M5S 2H4',
         id: 18,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -1036,7 +1037,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Supermarket',
         address: '268 Augusta Ave,, Toronto, Ontario, M5T 2L9',
         id: 19,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -1093,7 +1094,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'George Ignatieff Theatre',
         address: '15 Devonshire Pl, Toronto, ON, M5S 2C8',
         id: 20,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -1144,7 +1145,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Robert Gill Theatre',
         address: '3rd Floor, 214 College St, Toronto, Ontario, M5T 2Z9',
         id: 21,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -1195,7 +1196,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Robert Gill Theatre',
         address: '3rd Floor, 214 College St, Toronto, Ontario, M5T 2Z9',
         id: 22,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -1246,7 +1247,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Al Green Theatre',
         address: '750 Spadina Ave, Toronto, Ontario, M5S 2J2',
         id: 23,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -1297,7 +1298,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Factory Theatre Mainspace',
         address: '125 Bathurst St, Toronto, Ontario, M5V 2R2',
         id: 24,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -1348,7 +1349,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Mainspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 25,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -1399,7 +1400,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Backspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 26,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -1456,7 +1457,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'The Textile Museum of Canada',
         address: '55 Centre Ave,, Toronto, ON, M5G 2H5',
         id: 27,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -1543,7 +1544,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Randolph Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 28,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -1594,7 +1595,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Extraspace',
         address: '30 Bridgman Ave, Ontario, M5R 1X3',
         id: 29,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -1645,7 +1646,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Solo Room',
         address: '30 Bridgman Ave, Toronto, Ontario, M5R 1X3',
         id: 30,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -1702,7 +1703,7 @@ const shows: ShowWithPerformances[] = [
         venue: '74 Jones Ave',
         address: '74 Jones Ave,, Toronto, Ontario, M4M 2Z8',
         id: 31,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['relaxed'],
@@ -1783,7 +1784,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Randolph Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 32,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -1834,7 +1835,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'The Monarch Tavern',
         address: '12 Clinton Street, Toronto, Ontario',
         id: 33,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -1909,7 +1910,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Randolph Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 34,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -1960,7 +1961,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Eastminster United Church Community Space',
         address: '310 Danforth Avenue, Toronto, ON, M4K 1N6',
         id: 35,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -2005,7 +2006,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Miles Nadal Jewish Community Centre Pool',
         address: '750 Spadina Ave, Toronto, Ontario, M5S 2J2',
         id: 36,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -2050,7 +2051,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Streetcar Crowsnest Scotiabank Studio',
         address: '345 Carlaw Avenue, Toronto, ON, M4M 2T1',
         id: 37,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['asl'],
@@ -2101,7 +2102,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Extraspace',
         address: '30 Bridgman Ave, Ontario, M5R 1X3',
         id: 38,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -2152,7 +2153,7 @@ const shows: ShowWithPerformances[] = [
         venue: "Trinity-St. Paul's United Church",
         address: '427 Bloor Street West, Toronto, Ontario, M5S 1X7',
         id: 39,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -2215,7 +2216,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Robert Gill Theatre',
         address: '3rd Floor, 214 College St, Toronto, Ontario, M5T 2Z9',
         id: 40,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -2266,7 +2267,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Robert Gill Theatre',
         address: '3rd Floor, 214 College St, Toronto, Ontario, M5T 2Z9',
         id: 41,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -2317,7 +2318,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Streetcar Crowsnest Scotiabank Studio',
         address: '345 Carlaw Avenue, Toronto, ON, M4M 2T1',
         id: 42,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['relaxed', 'preview'],
@@ -2368,7 +2369,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'George Ignatieff Theatre',
         address: '15 Devonshire Pl, Toronto, ON, M5S 2C8',
         id: 43,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -2419,7 +2420,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Annex Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 44,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -2470,7 +2471,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Factory Theatre Studio',
         address: '125 Bathurst St, Toronto, Ontario, M5V 2R2',
         id: 45,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -2521,7 +2522,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Mainspace',
         address: '30 Bridgman Ave, Toronto, Ontario, M5R 1X3',
         id: 46,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -2572,7 +2573,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Helen Gardiner Phelan Playhouse',
         address: '79A Saint George St, Toronto, Ontario, M5S 3L8',
         id: 47,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -2623,7 +2624,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Extraspace',
         address: '30 Bridgman Ave, Ontario, M5R 1X3',
         id: 48,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -2674,7 +2675,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Al Green Theatre',
         address: '750 Spadina Ave, Toronto, Ontario, M5S 2J2',
         id: 49,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -2725,7 +2726,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Solo Room',
         address: '30 Bridgman Ave, Toronto, Ontario, M5R 1X3',
         id: 50,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -2782,7 +2783,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Mainspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 51,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -2833,7 +2834,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Robert Gill Theatre',
         address: '3rd Floor, 214 College St, Toronto, Ontario, M5T 2Z9',
         id: 52,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -2884,7 +2885,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Streetcar Crowsnest Guloien Theatre',
         address: '345 Carlaw Avenue, Toronto, ON, M4M 2T1',
         id: 53,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -2935,7 +2936,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Solo Room',
         address: '30 Bridgman Ave, Toronto, Ontario, M5R 1X3',
         id: 54,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -2992,7 +2993,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Randolph Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 55,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -3043,7 +3044,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Factory Theatre Mainspace',
         address: '125 Bathurst St, Toronto, Ontario, M5V 2R2',
         id: 56,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -3094,7 +3095,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'St. Vladimir Institute',
         address: '620 Spadina Ave, Toronto, Ontario, M5S 2H4',
         id: 57,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -3145,7 +3146,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'George Ignatieff Theatre',
         address: '15 Devonshire Pl, Toronto, ON, M5S 2C8',
         id: 58,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -3196,7 +3197,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Eastminster United Church Sanctuary',
         address: '310 Danforth Avenue, Toronto, Ontario, M6J 1C5',
         id: 59,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -3253,7 +3254,7 @@ const shows: ShowWithPerformances[] = [
         venue: "Trinity-St. Paul's United Church Gym",
         address: '427 Bloor Street West, Toronto, Ontario, M5S 1X6',
         id: 60,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -3310,7 +3311,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Factory Theatre Studio',
         address: '125 Bathurst St, Toronto, Ontario, M5V 2R2',
         id: 61,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -3361,7 +3362,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Factory Theatre Studio',
         address: '125 Bathurst St, Toronto, Ontario, M5V 2R2',
         id: 62,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -3412,7 +3413,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Annex Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 63,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -3463,7 +3464,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Streetcar Crowsnest Guloien Theatre',
         address: '345 Carlaw Avenue, Toronto, ON, M4M 2T1',
         id: 64,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -3514,7 +3515,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Al Green Theatre',
         address: '750 Spadina Ave, Toronto, Ontario, M5S 2J2',
         id: 65,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -3565,7 +3566,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Randolph Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 66,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -3616,7 +3617,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Smart Cookie Club at Artscape Youngplace',
         address: '180 Shaw Street, Studio 107, Toronto, Ontario, M6J 2W7',
         id: 67,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['relaxed'],
@@ -3685,7 +3686,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Al Green Theatre',
         address: '750 Spadina Ave, Toronto, Ontario, M5S 2J2',
         id: 68,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -3736,7 +3737,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Solo Room',
         address: '30 Bridgman Ave, Toronto, Ontario, M5R 1X3',
         id: 69,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -3793,7 +3794,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Streetcar Crowsnest Guloien Theatre',
         address: '345 Carlaw Avenue, Toronto, ON, M4M 2T1',
         id: 70,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -3844,7 +3845,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Streetcar Crowsnest Scotiabank Studio',
         address: '345 Carlaw Avenue, Toronto, ON, M4M 2T1',
         id: 71,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -3895,7 +3896,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Al Green Theatre',
         address: '750 Spadina Ave, Toronto, Ontario, M5S 2J2',
         id: 72,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -3946,7 +3947,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Randolph Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 73,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -3997,7 +3998,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Factory Theatre Mainspace',
         address: '125 Bathurst St, Toronto, Ontario, M5V 2R2',
         id: 74,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -4048,7 +4049,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Annex Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 75,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -4099,7 +4100,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Annex Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 76,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -4150,7 +4151,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Bloor Street United Church',
         address: '300 Bloor St W, Toronto, Ontario, M5S 1W3',
         id: 77,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -4219,7 +4220,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Factory Theatre Mainspace',
         address: '125 Bathurst St, Toronto, Ontario, M5V 2R2',
         id: 78,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -4270,7 +4271,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Mainspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 79,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -4285,7 +4286,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'George Ignatieff Theatre',
         address: '15 Devonshire Pl, Toronto, ON, M5S 2C8',
         id: 80,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -4336,7 +4337,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Annex Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 81,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -4387,7 +4388,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Factory Theatre Mainspace',
         address: '125 Bathurst St, Toronto, Ontario, M5V 2R2',
         id: 82,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -4438,7 +4439,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'The Painted Lady',
         address: '218 Ossington Avenue, Toronto, Ontario',
         id: 83,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -4507,7 +4508,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'George Ignatieff Theatre',
         address: '15 Devonshire Pl, Toronto, ON, M5S 2C8',
         id: 84,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -4558,7 +4559,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Robert Gill Theatre',
         address: '3rd Floor, 214 College St, Toronto, Ontario, M5T 2Z9',
         id: 85,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -4609,7 +4610,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Helen Gardiner Phelan Playhouse',
         address: '79A Saint George St, Toronto, Ontario, M5S 3L8',
         id: 86,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -4660,7 +4661,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Solo Room',
         address: '30 Bridgman Ave, Toronto, Ontario, M5R 1X3',
         id: 87,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -4717,7 +4718,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Helen Gardiner Phelan Playhouse',
         address: '79A Saint George St, Toronto, Ontario, M5S 3L8',
         id: 88,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -4768,7 +4769,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Mainspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 89,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -4819,7 +4820,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Solo Room',
         address: '30 Bridgman Ave, Toronto, Ontario, M5R 1X3',
         id: 90,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -4876,7 +4877,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Streetcar Crowsnest Guloien Theatre',
         address: '345 Carlaw Avenue, Toronto, ON, M4M 2T1',
         id: 91,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -4927,7 +4928,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Streetcar Crowsnest Scotiabank Studio',
         address: '345 Carlaw Avenue, Toronto, ON, M4M 2T1',
         id: 92,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -4978,7 +4979,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Annex Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 93,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -5029,7 +5030,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Factory Theatre Studio',
         address: '125 Bathurst St, Toronto, Ontario, M5V 2R2',
         id: 94,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -5080,7 +5081,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Extraspace',
         address: '30 Bridgman Ave, Ontario, M5R 1X3',
         id: 95,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -5131,7 +5132,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Streetcar Crowsnest Guloien Theatre',
         address: '345 Carlaw Avenue, Toronto, ON, M4M 2T1',
         id: 96,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -5182,7 +5183,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Factory Theatre Mainspace',
         address: '125 Bathurst St, Toronto, Ontario, M5V 2R2',
         id: 97,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -5233,7 +5234,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Backspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 98,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -5290,7 +5291,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Annex Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 99,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -5341,7 +5342,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Factory Theatre Studio',
         address: '125 Bathurst St, Toronto, Ontario, M5V 2R2',
         id: 100,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -5392,7 +5393,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Streetcar Crowsnest Scotiabank Studio',
         address: '345 Carlaw Avenue, Toronto, ON, M4M 2T1',
         id: 101,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -5443,7 +5444,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Helen Gardiner Phelan Playhouse',
         address: '79A Saint George St, Toronto, Ontario, M5S 3L8',
         id: 102,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -5494,7 +5495,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Randolph Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 103,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -5545,7 +5546,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Streetcar Crowsnest Scotiabank Studio',
         address: '345 Carlaw Avenue, Toronto, ON, M4M 2T1',
         id: 104,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -5596,7 +5597,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Mainspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 105,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -5647,7 +5648,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Annex Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 106,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -5698,7 +5699,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Imperial Pub',
         address: '54 Dundas St E,, Toronto, Ontario, M5B 1C7',
         id: 107,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -5767,7 +5768,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Streetcar Crowsnest Guloien Theatre',
         address: '345 Carlaw Avenue, Toronto, ON, M4M 2T1',
         id: 108,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -5818,7 +5819,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'George Ignatieff Theatre',
         address: '15 Devonshire Pl, Toronto, ON, M5S 2C8',
         id: 109,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['relaxed', 'preview'],
@@ -5869,7 +5870,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Factory Theatre Studio',
         address: '125 Bathurst St, Toronto, Ontario, M5V 2R2',
         id: 110,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -5920,7 +5921,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Backspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 111,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -5977,7 +5978,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Streetcar Crowsnest Guloien Theatre',
         address: '345 Carlaw Avenue, Toronto, ON, M4M 2T1',
         id: 112,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -6028,7 +6029,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'St. Vladimir Institute',
         address: '620 Spadina Ave, Toronto, Ontario, M5S 2H4',
         id: 113,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -6079,7 +6080,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Mainspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 114,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -6130,7 +6131,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'George Ignatieff Theatre',
         address: '15 Devonshire Pl, Toronto, ON, M5S 2C8',
         id: 115,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -6181,7 +6182,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Al Green Theatre',
         address: '750 Spadina Ave, Toronto, Ontario, M5S 2J2',
         id: 116,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -6232,7 +6233,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Mainspace',
         address: '30 Bridgman Ave, Toronto, Ontario, M5R 1X3',
         id: 117,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -6283,7 +6284,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Randolph Theatre',
         address: '736 Bathurst St, Toronto, Ontario, M5S 1Z5',
         id: 118,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -6334,7 +6335,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Extraspace',
         address: '30 Bridgman Ave, Ontario, M5R 1X3',
         id: 119,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -6385,7 +6386,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Extraspace',
         address: '30 Bridgman Ave, Ontario, M5R 1X3',
         id: 120,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -6436,7 +6437,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Scadding Court Community Centre',
         address: '707 Dundas Street West, Toronto, Ontario',
         id: 121,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['relaxed'],
@@ -6517,7 +6518,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Streetcar Crowsnest Scotiabank Studio',
         address: '345 Carlaw Avenue, Toronto, ON, M4M 2T1',
         id: 122,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -6568,7 +6569,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Extraspace',
         address: '30 Bridgman Ave, Ontario, M5R 1X3',
         id: 123,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -6619,7 +6620,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Mainspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 124,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -6670,7 +6671,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Mainspace',
         address: '30 Bridgman Ave, Toronto, Ontario, M5R 1X3',
         id: 125,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -6721,7 +6722,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Al Green Theatre',
         address: '750 Spadina Ave, Toronto, Ontario, M5S 2J2',
         id: 126,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -6772,7 +6773,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Streetcar Crowsnest Scotiabank Studio',
         address: '345 Carlaw Avenue, Toronto, ON, M4M 2T1',
         id: 127,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -6823,7 +6824,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Helen Gardiner Phelan Playhouse',
         address: '79A Saint George St, Toronto, Ontario, M5S 3L8',
         id: 128,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -6874,7 +6875,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'St. Vladimir Institute',
         address: '620 Spadina Ave, Toronto, Ontario, M5S 2H4',
         id: 129,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -6925,7 +6926,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Helen Gardiner Phelan Playhouse',
         address: '79A Saint George St, Toronto, Ontario, M5S 3L8',
         id: 130,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -6976,7 +6977,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Backspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 131,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -7033,7 +7034,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Paintbox Bistro',
         address: '555 Dundas St E, Toronto, ON, M5A 2B7',
         id: 132,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -7084,7 +7085,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Al Green Theatre',
         address: '750 Spadina Ave, Toronto, Ontario, M5S 2J2',
         id: 133,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -7135,7 +7136,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'St. George the Martyr Courtyard',
         address: '197 John Street,, Toronto, Ontario, M5T 1X6',
         id: 134,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -7210,7 +7211,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Factory Theatre Studio',
         address: '125 Bathurst St, Toronto, Ontario, M5V 2R2',
         id: 135,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -7261,7 +7262,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Mainspace',
         address: '30 Bridgman Ave, Toronto, Ontario, M5R 1X3',
         id: 136,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -7312,7 +7313,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Factory Theatre Mainspace',
         address: '125 Bathurst St, Toronto, Ontario, M5V 2R2',
         id: 137,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -7363,7 +7364,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Mainspace',
         address: '30 Bridgman Ave, Toronto, Ontario, M5R 1X3',
         id: 138,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -7414,7 +7415,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Tarragon Theatre Mainspace',
         address: '30 Bridgman Ave, Toronto, Ontario, M5R 1X3',
         id: 139,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -7465,7 +7466,7 @@ const shows: ShowWithPerformances[] = [
         venue: '401 Richmond',
         address: '401 Richmond St W, Toronto, Ontario, M5V 3A8',
         id: 140,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -7630,7 +7631,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Al Green Theatre',
         address: '750 Spadina Ave, Toronto, Ontario, M5S 2J2',
         id: 141,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -7681,7 +7682,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Grace Toronto Church',
         address: '383 Jarvis St,, Toronto, Ontario, M5B 2C7',
         id: 142,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -7732,7 +7733,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'St. Vladimir Institute',
         address: '620 Spadina Ave, Toronto, Ontario, M5S 2H4',
         id: 143,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -7783,7 +7784,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Streetcar Crowsnest Guloien Theatre',
         address: '345 Carlaw Avenue, Toronto, ON, M4M 2T1',
         id: 144,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -7834,7 +7835,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Backspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 145,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -7891,7 +7892,7 @@ const shows: ShowWithPerformances[] = [
         venue: "Sarah's Cafe",
         address: '1426 Danforth Ave, Toronto, Ontario, M4J 1N4',
         id: 146,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -7972,7 +7973,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Factory Theatre Studio',
         address: '125 Bathurst St, Toronto, Ontario, M5V 2R2',
         id: 147,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -8023,7 +8024,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Helen Gardiner Phelan Playhouse',
         address: '79A Saint George St, Toronto, Ontario, M5S 3L8',
         id: 148,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -8074,7 +8075,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'St. Vladimir Institute',
         address: '620 Spadina Ave, Toronto, Ontario, M5S 2H4',
         id: 149,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -8125,7 +8126,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Theatre Passe Muraille Backspace',
         address: '16 Ryerson Ave, Toronto, Ontario, M5T 2P3',
         id: 150,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: ['preview'],
@@ -8182,7 +8183,7 @@ const shows: ShowWithPerformances[] = [
         venue: 'Robert Gill Theatre',
         address: '3rd Floor, 214 College St, Toronto, Ontario, M5T 2Z9',
         id: 151,
-        perfs: [
+        perfsData: [
             {
                 id: 0,
                 flags: [],
@@ -8228,5 +8229,40 @@ const shows: ShowWithPerformances[] = [
         ],
     },
 ]
+
+const referenceStartOfDay = moment().startOf('day')
+
+// Hydrate shows data
+// TODO check memory usage from all the moment objects created here
+const shows = showsData.map((show) => {
+    const perfs: Performance[] = show.perfsData.map((perf) => {
+        const start = moment(perf.start)
+        const end = moment(perf.end)
+        const startTime = referenceStartOfDay
+            .clone()
+            .add(start.diff(start.clone().startOf('day')), 'milliseconds')
+        const endTime = referenceStartOfDay
+            .clone()
+            .add(end.diff(end.clone().startOf('day')), 'milliseconds')
+
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { start: _1, end: _2, ...partialPerformance } = perf
+
+        return {
+            ...partialPerformance,
+            showId: show.id,
+            start: start,
+            end: end,
+            startTime,
+            endTime,
+        }
+    })
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { perfsData: _, ...partialShow } = show
+    return {
+        ...partialShow,
+        perfs,
+    }
+})
 
 export default shows

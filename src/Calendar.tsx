@@ -1,97 +1,42 @@
-import moment from 'moment'
+import moment, { Moment } from 'moment'
 import flagsKey from './data/flagsKey.ts'
 import './styles/Calendar.css'
 import {
-    PerformanceData,
-    PerformanceToRender,
     PerformancesByDay,
-    SelectedPerfs,
     SelectedShows,
+    Performance,
+    ToggleSelectPerfActionGenerator,
 } from './types.ts'
 
 const numCssColours = 16
 
 export default function Calendar({
     selectedShows,
-    selectedPerfs,
+    days,
+    perfsByDay,
+    minStartTime,
+    maxEndTime,
+    timeRange,
     toggleSelectPerf,
 }: {
     selectedShows: SelectedShows
-    selectedPerfs: SelectedPerfs
+    minStartTime?: Moment
+    maxEndTime?: Moment
+    timeRange?: number
+    perfsByDay: PerformancesByDay
+    days: string[]
     toggleSelectPerf: (perf: Performance) => void
 }) {
-    if (selectedShows.length === 0) {
+    if (
+        selectedShows.length === 0 ||
+        minStartTime === undefined ||
+        maxEndTime === undefined
+    ) {
         return null
     }
 
-    // Create chronologically ordered list of performances
-    const days: string[] = []
-    const perfsByDay: PerformancesByDay = {}
-
-    const referenceStartOfDay = moment().startOf('day')
-    let minStartTime: undefined | moment.Moment
-    let maxEndTime: undefined | moment.Moment
-
-    selectedShows.forEach((show) => {
-        show.perfs.forEach(
-            ({ id: perfId, flags, start: startString, end: endString }) => {
-                const start = moment(startString)
-                const end = moment(endString)
-
-                const startTime = referenceStartOfDay
-                    .clone()
-                    .add(
-                        start.diff(start.clone().startOf('day')),
-                        'milliseconds'
-                    )
-                const endTime = referenceStartOfDay
-                    .clone()
-                    .add(end.diff(end.clone().startOf('day')), 'milliseconds')
-
-                // TODO check timezone logic
-                if (
-                    minStartTime === undefined ||
-                    startTime.isBefore(minStartTime)
-                )
-                    minStartTime = startTime
-                if (maxEndTime === undefined || endTime.isAfter(maxEndTime))
-                    maxEndTime = endTime
-
-                const dayString = start.format('YYYY-MM-DD')
-
-                if (!(dayString in perfsByDay)) {
-                    days.push(dayString)
-                    perfsByDay[dayString] = []
-                }
-
-                const colourIndex = show.id % numCssColours
-
-                perfsByDay[dayString].push({
-                    title: show.title,
-                    showId: show.id,
-                    perfId,
-                    flags,
-                    url: show.url,
-                    venue: show.venue,
-                    address: show.address,
-                    startString,
-                    endString,
-                    start,
-                    end,
-                    startTime,
-                    endTime,
-                    colourIndex,
-                })
-            }
-        )
-    })
-
-    // NOTE: we already return early if selectedShows.length === 0, so by this
-    // point we know that minStartTime and maxEndTime are set to something.
-    const timeRange = maxEndTime!.diff(minStartTime!)
-
-    days.sort()
-
+    // NOTE: if minStartTime and maxEndTime are set, timeRange is guaranteed to
+    // be set.
     return (
         <ul className="calendar">
             {days.map((dayString) => (
@@ -99,10 +44,11 @@ export default function Calendar({
                     {...{
                         key: dayString,
                         dayString,
-                        perfsByDay,
-                        minStartTime: minStartTime!,
-                        timeRange,
-                        selectedPerfs,
+                        perfs: perfsByDay[dayString],
+                        minStartTime: minStartTime,
+                        maxEndTime: maxEndTime,
+                        timeRange: timeRange!,
+                        selectedShows,
                         toggleSelectPerf,
                     }}
                 />
@@ -112,28 +58,22 @@ export default function Calendar({
 }
 
 function CalendarDay({
-    perfsByDay,
+    perfs,
     dayString,
     minStartTime,
     timeRange,
-    selectedPerfs,
+    selectedShows,
     toggleSelectPerf,
 }: {
-    perfsByDay: PerformancesByDay
+    perfs: Performance[]
     dayString: string
     minStartTime: moment.Moment
+    maxEndTime: moment.Moment
     timeRange: number
-    selectedPerfs: SelectedPerfs
-    toggleSelectPerf: (perf: PerformanceData) => void
+    selectedShows: SelectedShows
+    toggleSelectPerf: ToggleSelectPerfActionGenerator
 }) {
-    const perfs = perfsByDay[dayString]
-    perfs.sort((a, b) =>
-        a.startString < b.startString
-            ? -1
-            : b.startString < a.startString
-            ? 1
-            : 0
-    )
+    perfs.sort((a, b) => (a.start < b.start ? -1 : b.start < a.start ? 1 : 0))
 
     const renderedPerfs = perfs.map((perf, index) => (
         <CalendarItem
@@ -143,7 +83,7 @@ function CalendarDay({
                 minStartTime,
                 timeRange,
                 toggleSelectPerf,
-                selectedPerfs,
+                selectedShows,
             }}
         />
     ))
@@ -165,15 +105,18 @@ function CalendarItem({
     perf,
     minStartTime,
     timeRange,
-    selectedPerfs,
+    selectedShows,
     toggleSelectPerf,
 }: {
-    perf: PerformanceToRender
+    perf: Performance
     minStartTime: moment.Moment
-    selectedPerfs: SelectedPerfs
     timeRange: number
-    toggleSelectPerf: (perf: PerformanceData) => void
+    selectedShows: SelectedShows
+    toggleSelectPerf: ToggleSelectPerfActionGenerator
 }) {
+    const show = selectedShows.find((show) => show.id === perf.showId)
+    if (!show) return
+
     const leftPercent = (perf.startTime.diff(minStartTime) / timeRange) * 100
     const widthPercent = (perf.endTime.diff(perf.startTime) / timeRange) * 100
 
@@ -182,12 +125,13 @@ function CalendarItem({
         width: `${widthPercent}%`,
     }
 
-    const colourClassName = `calendar-item-colour-${perf.colourIndex}`
+    const colourIndex = perf.showId % numCssColours
+    const colourClassName = `calendar-item-colour-${colourIndex}`
     const classNames = ['calendar-item', colourClassName]
 
-    if (perf.showId in selectedPerfs) {
-        // FIXME I added '.id' here, does that work? Why did it work before??
-        if (selectedPerfs[perf.showId].id === perf.perfId) {
+    if (show.selectedPerfId !== undefined) {
+        // Show has a selected performance
+        if (show.selectedPerfId == perf.id) {
             // This one is selected
             classNames.push('calendar-item-selected')
         } else {
@@ -195,28 +139,28 @@ function CalendarItem({
             classNames.push('calendar-item-deselected')
         }
     }
-    // Else, none is selected
+    // Else, show has no selected performance
 
-    const start = perf.start.format('h:mma')
-    const end = perf.end.format('h:mma')
+    const startFormatted = perf.start.format('h:mma')
+    const endFormatted = perf.end.format('h:mma')
     return (
         <li style={style} className={classNames.join(' ')}>
-            <div className="start time">{start}</div>
+            <div className="start time">{startFormatted}</div>
             <div className="box">
-                <h3 onClick={() => toggleSelectPerf(perf)}>{perf.title}</h3>
+                <h3 onClick={() => toggleSelectPerf(perf)}>{show.title}</h3>
                 <p aria-label="Venue Map Link">
                     <a
-                        href={buildMapUrl(perf.venue, perf.address)}
-                        title={perf.address}
+                        href={buildMapUrl(show.venue, show.address)}
+                        title={show.address}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        {perf.venue}
+                        {show.venue}
                     </a>
                 </p>
                 <p>
                     <a
-                        href={perf.url}
+                        href={show.url}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -245,7 +189,7 @@ function CalendarItem({
                     })}
                 </p>
             </div>
-            <div className="end time">{end}</div>
+            <div className="end time">{endFormatted}</div>
         </li>
     )
 }

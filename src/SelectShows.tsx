@@ -1,7 +1,12 @@
 import { ChangeEvent, useState } from 'react'
 import shows from './data/shows.ts'
 import './styles/SelectShows.css'
-import { SelectedShows, Show } from './types.ts'
+import {
+    DeselectShowActionGenerator,
+    SelectShowActionGenerator,
+    SelectedShows,
+    Show,
+} from './types.ts'
 
 export default function SelectShows({
     selectedShows,
@@ -9,8 +14,8 @@ export default function SelectShows({
     deselectShow,
 }: {
     selectedShows: SelectedShows
-    selectShow: (show: Show) => void
-    deselectShow: (show: Show) => void
+    selectShow: SelectShowActionGenerator
+    deselectShow: DeselectShowActionGenerator
 }) {
     const [searchInput, updateSearchInput] = useState('')
 
@@ -47,6 +52,8 @@ export default function SelectShows({
         )
     }
 
+    const selectedShowIds = selectedShows.map((show) => show.id)
+
     return (
         <div className="select-shows">
             <h2>Show Selection</h2>
@@ -55,9 +62,12 @@ export default function SelectShows({
                 <input type="text" onChange={updateShowSearch} />
             </label>
             <ul>
-                {selectedShows.map((show) => renderShow(show, true))}
+                {/* Show selected shows first */}
                 {shows
-                    .filter((show) => !selectedShows.includes(show))
+                    .filter((show) => selectedShowIds.includes(show.id))
+                    .map((show) => renderShow(show, true))}
+                {shows
+                    .filter((show) => !selectedShowIds.includes(show.id))
                     .map((show) => renderShow(show, false))}
             </ul>
         </div>

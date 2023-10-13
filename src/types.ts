@@ -1,4 +1,6 @@
-export type Show = {
+import { Moment } from 'moment'
+
+export type ShowBase = {
     id: number
     title: string
     url: string
@@ -6,32 +8,31 @@ export type Show = {
     address: string
 }
 
-export type ShowWithPerformances = Show & {
-    perfs: PerformanceData[]
+export type ShowData = ShowBase & {
+    perfsData: PerformanceData[]
 }
 
-export type PerformanceData = {
+export type Show = ShowBase & {
+    perfs: Performance[]
+    selectedPerfId?: number
+}
+
+export type PerformanceBase = {
     id: number
     flags: PerformanceFlag[]
-    start: string // datetime
-    end: string // datetime
 }
 
-export type PerformanceToRender = {
-    title: string
+export type PerformanceData = PerformanceBase & {
+    start: string // datetime string
+    end: string // datetime string
+}
+
+export type Performance = PerformanceBase & {
     showId: number
-    perfId: number
-    flags: PerformanceFlag[]
-    url: string
-    venue: string
-    address: string
-    startString: string
-    endString: string
-    start: moment.Moment
-    end: moment.Moment
-    startTime: moment.Moment
-    endTime: moment.Moment
-    colourIndex: number
+    start: Moment
+    end: Moment
+    startTime: moment.Moment // time normalized to current day
+    endTime: moment.Moment // time normalized to current day
 }
 
 export type PerformanceFlag =
@@ -49,15 +50,16 @@ export type PerformanceFlagDetail = {
     label: string
 }
 
-export type PerformancesByDay = Record<string, PerformanceToRender[]>
-
+export type SelectedShows = Show[]
+export type PerformancesByDay = Record<string, Performance[]>
 export type AppState = {
+    minStartTime?: Moment
+    maxEndTime?: Moment // TODO: is this actually needed in the state?
+    timeRange?: number
     selectedShows: SelectedShows
-    selectedPerfs: SelectedPerfs
+    perfsByDay: PerformancesByDay
+    days: string[]
 }
-
-export type SelectedShows = ShowWithPerformances[]
-export type SelectedPerfs = PerformanceData[]
 
 export enum ActionType {
     SELECT_SHOW,
@@ -70,6 +72,11 @@ type SelectOrDeselectShowAction = {
 }
 type ToggleSelectPerfAction = {
     type: ActionType.TOGGLE_SELECT_PERF
-    perf: PerformanceData
+    showId: number
+    perfId: number
 }
 export type AppAction = SelectOrDeselectShowAction | ToggleSelectPerfAction
+
+export type SelectShowActionGenerator = (show: Show) => void
+export type DeselectShowActionGenerator = (show: Show) => void
+export type ToggleSelectPerfActionGenerator = (perf: Performance) => void

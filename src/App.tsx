@@ -3,19 +3,32 @@ import Calendar from './Calendar.tsx'
 import SelectShows from './SelectShows.tsx'
 import appReducer, { initialState } from './appReducer.ts'
 import './styles/App.css'
-import { ActionType, Show } from './types.ts'
+import {
+    ActionType,
+    Show,
+    Performance,
+    ToggleSelectPerfActionGenerator,
+    DeselectShowActionGenerator,
+    SelectShowActionGenerator,
+} from './types.ts'
 
 function App() {
     const [appState, dispatch] = useReducer(appReducer, initialState)
 
-    function selectShow(show: Show) {
+    const selectShow: SelectShowActionGenerator = (show: Show) => {
         dispatch({ type: ActionType.SELECT_SHOW, show })
     }
-    function deselectShow(show: Show) {
+    const deselectShow: DeselectShowActionGenerator = (show: Show) => {
         dispatch({ type: ActionType.DESELECT_SHOW, show })
     }
-    function toggleSelectPerf(perf: Performance) {
-        dispatch({ type: ActionType.TOGGLE_SELECT_PERF, perf })
+    const toggleSelectPerf: ToggleSelectPerfActionGenerator = (
+        perf: Performance
+    ) => {
+        dispatch({
+            type: ActionType.TOGGLE_SELECT_PERF,
+            perfId: perf.id,
+            showId: perf.showId,
+        })
     }
 
     return (
@@ -25,11 +38,7 @@ function App() {
                 selectShow={selectShow}
                 deselectShow={deselectShow}
             />
-            <Calendar
-                selectedShows={appState.selectedShows}
-                selectedPerfs={appState.selectedPerfs}
-                toggleSelectPerf={toggleSelectPerf}
-            />
+            <Calendar {...appState} toggleSelectPerf={toggleSelectPerf} />
         </div>
     )
 }

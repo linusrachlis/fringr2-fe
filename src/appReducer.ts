@@ -1,72 +1,110 @@
+import moment, { Moment } from 'moment'
 import {
     ActionType,
     AppAction,
     AppState,
-    SelectedPerfs,
+    PerformancesByDay,
     SelectedShows,
 } from './types.ts'
 
 export const initialState: AppState = {
+    minStartTime: undefined,
+    maxEndTime: undefined,
+    timeRange: undefined,
     selectedShows: [],
-    selectedPerfs: [],
+    perfsByDay: {},
+    days: [],
 }
 
-export default function appReducer(appState: AppState, action: AppAction) {
-    return {
-        selectedShows: selectedShowsReducer(appState.selectedShows, action),
-        selectedPerfs: selectedPerfsReducer(appState.selectedPerfs, action),
-    }
-}
+function computeAggregatePerfInfo(selectedShows: SelectedShows): {
+    perfsByDay: PerformancesByDay
+    days: string[]
+    minStartTime?: Moment
+    maxEndTime?: Moment
+    timeRange?: number
+} {
+    // Create chronologically ordered list of performances
+    const days: string[] = []
+    const perfsByDay: PerformancesByDay = {}
 
-function selectedShowsReducer(
-    selectedShows: SelectedShows,
+    let minStartTime: undefined | moment.Moment
+    let maxEndTime: undefined | moment.Moment
+    selectedShows.forEach((show) => {
+        show.perfs.forEach((perf) => {
+            if (
+                minStartTime === undefined ||
+                perf.startTime.isBefore(minStartTime)
+            ) {
+                minStartTime = perf.startTime
+            }
+            if (maxEndTime === undefined || perf.endTime.isAfter(maxEndTime)) {
+                maxEndTime = perf.endTime
+            }
+            const dayString = perf.start.format('YYYY-MM-DD')
+
+            if (!(dayString in perfsByDay)) {
+                days.push(dayString)
+                perfsByDay[dayString] = []
+            }
+
+            perfsByDay[dayString].push(perf)
+        })
+    })
+
+    // NOTE: if maxEndTime is set, minStartTime is guaranteed also to be set.
+    const timeRange = maxEndTime?.diff(minStartTime!)
+
+    days.sort()
+
+    return { perfsByDay, days, minStartTime, maxEndTime, timeRange }
+}
+export default function appReducer(
+    state: AppState,
     action: AppAction
-): SelectedShows {
+): AppState {
     switch (action.type) {
-        case ActionType.SELECT_SHOW:
-            return selectedShows
+        case ActionType.SELECT_SHOW: {
+            const selectedShows = state.selectedShows
                 .concat(action.show)
                 .sort((a, b) =>
                     b.title.toLowerCase() < a.title.toLowerCase() ? 1 : -1
                 )
-        case ActionType.DESELECT_SHOW:
-            return selectedShows.filter((eachShow) => eachShow !== action.show)
-        default:
-            return selectedShows
-    }
-}
-
-function selectedPerfsReducer(
-    selectedPerfs: SelectedPerfs,
-    action: AppAction
-): SelectedPerfs {
-    switch (action.type) {
-        case ActionType.TOGGLE_SELECT_PERF:
-            // eslint-disable-next-line no-case-declarations
-            const newState: SelectedPerfs = []
-            // eslint-disable-next-line no-case-declarations
-            let showFound = false
-
-            for (const showId in selectedPerfs) {
-                // NOTE: object keys become strings
-                if (showId === String(action.perf.showId)) {
-                    showFound = true
-                    if (selectedPerfs[showId] !== action.perf.perfId) {
-                        newState[showId] = action.perf.perfId
-                    }
-                    // If the same perf was toggled as was currently selected,
-                    // then turn it off (i.e. exclude it from the new state).
-                } else {
-                    newState[showId] = selectedPerfs[showId]
+            const { perfsByDay, days, minStartTime, maxEndTime, timeRange } =
+                computeAggregatePerfInfo(selectedShows)
+            return {
+                selectedShows,
+                perfsByDay,
+                days,
+                minStartTime,
+                maxEndTime,
+                timeRange,
+            }
+        }
+        case ActionType.DESELECT_SHOW: {
+            const selectedShows = state.selectedShows.filter(
+                (show) => show.id !== action.show.id
+            )
+            const { perfsByDay, days, minStartTime, maxEndTime, timeRange } =
+                computeAggregatePerfInfo(selectedShows)
+            return {
+                selectedShows,
+                perfsByDay,
+                days,
+                minStartTime,
+                maxEndTime,
+                timeRange,
+            }
+        }
+        case ActionType.TOGGLE_SELECT_PERF: {
+            const selectedShows = state.selectedShows.map((show) => {
+                if (show.id === action.showId) {
+                    return { ...show, selectedPerfId: action.perfId }
                 }
-            }
-
-            if (!showFound) {
-                newState[action.perf.showId] = action.perf.perfId
-            }
-
-            return newState
+                return show
+            })
+            return { ...state, selectedShows }
+        }
         default:
-            return selectedPerfs
+            return state
     }
 }
