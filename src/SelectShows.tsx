@@ -1,69 +1,75 @@
-import React, { useState } from "react";
-
-
-import shows from "./data/shows.js";
-
-import "./styles/SelectShows.css";
+import { ChangeEvent, useState } from 'react'
+import shows from './data/shows.ts'
+import './styles/SelectShows.css'
 import {
-  DESELECT_SHOW,
-  SELECT_SHOW,
-  useAppDispatch,
-  useAppState,
-} from "./AppContext";
+    DeselectShowActionGenerator,
+    SelectShowActionGenerator,
+    SelectedShows,
+    Show,
+} from './types.ts'
 
+export default function SelectShows({
+    selectedShows,
+    selectShow,
+    deselectShow,
+}: {
+    selectedShows: SelectedShows
+    selectShow: SelectShowActionGenerator
+    deselectShow: DeselectShowActionGenerator
+}) {
+    const [searchInput, updateSearchInput] = useState('')
 
-export default function SelectShows() {
-  const [searchInput, updateSearchInput] = useState("");
-  const appState = useAppState();
-  const appDispatch = useAppDispatch();
+    function updateShowSearch(e: ChangeEvent<HTMLInputElement>) {
+        updateSearchInput(e.target.value.toLowerCase())
+    }
 
-  function updateShowSearch(e) {
-    updateSearchInput(e.target.value.toLowerCase());
-  }
+    function changeShowSelected(show: Show, isSelected: boolean) {
+        if (isSelected) selectShow(show)
+        else deselectShow(show)
+    }
 
-  function changeShowSelected(show, isSelected) {
-    if (isSelected) appDispatch({ type: SELECT_SHOW, show });
-    else appDispatch({ type: DESELECT_SHOW, show });
-  }
+    function renderShow(show: Show, isSelected: boolean) {
+        if (
+            searchInput !== '' &&
+            show.title.toLowerCase().indexOf(searchInput) === -1
+        ) {
+            return null
+        }
 
+        return (
+            <li key={show.id}>
+                <input
+                    type="checkbox"
+                    checked={isSelected}
+                    onChange={(e) => {
+                        changeShowSelected(show, e.target.checked)
+                    }}
+                />
+                <a href={show.url} target="_blank" rel="noopener noreferrer">
+                    {show.title}
+                </a>
+            </li>
+        )
+    }
 
-function renderShow(show, isSelected) {
-  if (
-    searchInput !== "" &&
-    show.title.toLowerCase().indexOf(searchInput) === -1
-  ) {
-    return null;
-  }
+    const selectedShowIds = selectedShows.map((show) => show.id)
 
-  return (
-    <li key={show.id}>
-      <input
-        type="checkbox"
-        checked={isSelected}
-        onChange={(e) => {
-          console.log(e)
-          changeShowSelected(show, e.target.checked)
-        }}
-      />
-      <a href={show.url} target="_blank" rel="noopener noreferrer">
-        {show.title}
-      </a>
-    </li>
-  );
-}
-
-  return (
-    <div className="select-shows">
-      <h2>Show Selection</h2>
-      <label>
-        Filter by title: <input type="text" onChange={updateShowSearch} />
-      </label>
-      <ul>
-        {appState.selectedShows.map((show) => renderShow(show, true))}
-        {shows
-          .filter((show) => !appState.selectedShows.includes(show))
-          .map((show) => renderShow(show, false))}
-      </ul>
-    </div>
-  );
+    return (
+        <div className="select-shows">
+            <h2>Show Selection</h2>
+            <label>
+                Filter by title:{' '}
+                <input type="text" onChange={updateShowSearch} />
+            </label>
+            <ul>
+                {/* Show selected shows first */}
+                {shows
+                    .filter((show) => selectedShowIds.includes(show.id))
+                    .map((show) => renderShow(show, true))}
+                {shows
+                    .filter((show) => !selectedShowIds.includes(show.id))
+                    .map((show) => renderShow(show, false))}
+            </ul>
+        </div>
+    )
 }
