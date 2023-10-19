@@ -24,20 +24,24 @@ export type PerformanceBase = {
 
 export type PerformanceData = PerformanceBase & {
     start: string // datetime string
-    end: string // datetime string
+    end?: string // datetime string
 }
 
 export type Performance = PerformanceBase & {
     showId: number
     start: Moment
-    end: Moment
-    startTime: moment.Moment // time normalized to current day
-    endTime: moment.Moment // time normalized to current day
+    end?: Moment
+    // Times normalized to current day -- note, if show has no runtime and thus
+    // no precise end time, we "deem" the end time to be 2 hours after start,
+    // for the purpose of calculating "maxEndTime" of the set of performances.
+    startTime: moment.Moment
+    deemedEndTime: moment.Moment
 }
 
 export type PerformanceFlag =
     | 'assisted-hearing'
     | 'audio-description'
+    | 'closed-captioning'
     | 'relaxed'
     | 'asl'
     | 'tad'
@@ -65,6 +69,7 @@ export enum ActionType {
     SELECT_SHOW,
     DESELECT_SHOW,
     TOGGLE_SELECT_PERF,
+    INIT,
 }
 type SelectOrDeselectShowAction = {
     type: ActionType.SELECT_SHOW | ActionType.DESELECT_SHOW
@@ -75,7 +80,10 @@ type ToggleSelectPerfAction = {
     showId: number
     perfId: number
 }
-export type AppAction = SelectOrDeselectShowAction | ToggleSelectPerfAction
+export type AppAction =
+    | SelectOrDeselectShowAction
+    | ToggleSelectPerfAction
+    | { type: ActionType.INIT }
 
 export type SelectShowActionGenerator = (show: Show) => void
 export type DeselectShowActionGenerator = (show: Show) => void

@@ -9,6 +9,10 @@ const flagsKey: Record<PerformanceFlag, PerformanceFlagDetail> = {
         emoji: '💬',
         label: 'Audio Description',
     },
+    'closed-captioning': {
+        emoji: '㏄',
+        label: 'Closed Captioning',
+    },
     relaxed: {
         emoji: '🤗',
         label: 'Relaxed Performance',

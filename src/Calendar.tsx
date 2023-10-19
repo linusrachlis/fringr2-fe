@@ -15,28 +15,21 @@ export default function Calendar({
     days,
     perfsByDay,
     minStartTime,
-    maxEndTime,
     timeRange,
     toggleSelectPerf,
 }: {
     selectedShows: SelectedShows
     minStartTime?: Moment
-    maxEndTime?: Moment
     timeRange?: number
     perfsByDay: PerformancesByDay
     days: string[]
     toggleSelectPerf: (perf: Performance) => void
 }) {
-    if (
-        selectedShows.length === 0 ||
-        minStartTime === undefined ||
-        maxEndTime === undefined
-    ) {
+    if (selectedShows.length === 0 || minStartTime === undefined) {
         return null
     }
 
-    // NOTE: if minStartTime and maxEndTime are set, timeRange is guaranteed to
-    // be set.
+    // NOTE: if minStartTime is set, timeRange is guaranteed to be set.
     return (
         <ul className="calendar">
             {days.map((dayString) => (
@@ -46,7 +39,6 @@ export default function Calendar({
                         dayString,
                         perfs: perfsByDay[dayString],
                         minStartTime: minStartTime,
-                        maxEndTime: maxEndTime,
                         timeRange: timeRange!,
                         selectedShows,
                         toggleSelectPerf,
@@ -68,7 +60,6 @@ function CalendarDay({
     perfs: Performance[]
     dayString: string
     minStartTime: moment.Moment
-    maxEndTime: moment.Moment
     timeRange: number
     selectedShows: SelectedShows
     toggleSelectPerf: ToggleSelectPerfActionGenerator
@@ -118,7 +109,8 @@ function CalendarItem({
     if (!show) return
 
     const leftPercent = (perf.startTime.diff(minStartTime) / timeRange) * 100
-    const widthPercent = (perf.endTime.diff(perf.startTime) / timeRange) * 100
+    const widthPercent =
+        (perf.deemedEndTime.diff(perf.startTime) / timeRange) * 100
 
     const style = {
         marginLeft: `${leftPercent}%`,
@@ -141,11 +133,9 @@ function CalendarItem({
     }
     // Else, show has no selected performance
 
-    const startFormatted = perf.start.format('h:mma')
-    const endFormatted = perf.end.format('h:mma')
     return (
         <li style={style} className={classNames.join(' ')}>
-            <div className="start time">{startFormatted}</div>
+            <div className="start time">{perf.start.format('h:mma')}</div>
             <div className="box">
                 <h3 onClick={() => toggleSelectPerf(perf)}>{show.title}</h3>
                 <p aria-label="Venue Map Link">
@@ -173,7 +163,6 @@ function CalendarItem({
                         </span>
                     </a>
                     {perf.flags.map((flag, index) => {
-                        if (!(flag in flagsKey)) return null
                         const flagOutput = flagsKey[flag]
 
                         return (
@@ -189,7 +178,9 @@ function CalendarItem({
                     })}
                 </p>
             </div>
-            <div className="end time">{endFormatted}</div>
+            {perf.end !== undefined && (
+                <div className="end time">{perf.end.format('h:mma')}</div>
+            )}
         </li>
     )
 }
