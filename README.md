@@ -2,7 +2,11 @@
 
 An easier way to Fringe more: select the shows you want to see, and get a visual planner to help you fit them all in!
 
-> Note: the current show data is from the 2019 Toronto Fringe Festival. I'm working on updating it for the [Next Stage Festival](https://fringetoronto.com/next-stage/about) (October 18-29, 2023). The next [Toronto Fringe Festival](https://fringetoronto.com/fringe/about) will be July 3-14, 2024.
+https://fringr.rachlis.net
+
+> Note: the current show data is for the [Next Stage Festival](https://fringetoronto.com/next-stage/about) (October 18-29, 2023).
+>
+> The next [Toronto Fringe Festival](https://fringetoronto.com/fringe/about) will be July 3-14, 2024.
 
 ![Screenshot](screenshot.png)
 
