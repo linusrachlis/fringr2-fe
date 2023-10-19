@@ -6,6 +6,7 @@ import {
     PerformancesByDay,
     SelectedShows,
 } from './types.ts'
+import shows from './data/shows.ts'
 
 export const initialState: AppState = {
     minStartTime: undefined,
@@ -37,8 +38,11 @@ function computeAggregatePerfInfo(selectedShows: SelectedShows): {
             ) {
                 minStartTime = perf.startTime
             }
-            if (maxEndTime === undefined || perf.endTime.isAfter(maxEndTime)) {
-                maxEndTime = perf.endTime
+            if (
+                maxEndTime === undefined ||
+                perf.deemedEndTime.isAfter(maxEndTime)
+            ) {
+                maxEndTime = perf.deemedEndTime
             }
             const dayString = perf.start.format('YYYY-MM-DD')
 
@@ -58,11 +62,28 @@ function computeAggregatePerfInfo(selectedShows: SelectedShows): {
 
     return { perfsByDay, days, minStartTime, maxEndTime, timeRange }
 }
+
 export default function appReducer(
     state: AppState,
     action: AppAction
 ): AppState {
     switch (action.type) {
+        case ActionType.INIT: {
+            // Select all shows on init
+            const selectedShows = shows.sort((a, b) =>
+                b.title.toLowerCase() < a.title.toLowerCase() ? 1 : -1
+            )
+            const { perfsByDay, days, minStartTime, maxEndTime, timeRange } =
+                computeAggregatePerfInfo(selectedShows)
+            return {
+                selectedShows,
+                perfsByDay,
+                days,
+                minStartTime,
+                maxEndTime,
+                timeRange,
+            }
+        }
         case ActionType.SELECT_SHOW: {
             const selectedShows = state.selectedShows
                 .concat(action.show)

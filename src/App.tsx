@@ -1,4 +1,4 @@
-import { useReducer } from 'react'
+import { useEffect, useReducer } from 'react'
 import Calendar from './Calendar.tsx'
 import SelectShows from './SelectShows.tsx'
 import appReducer, { initialState } from './appReducer.ts'
@@ -14,6 +14,9 @@ import {
 
 function App() {
     const [appState, dispatch] = useReducer(appReducer, initialState)
+    useEffect(() => {
+        dispatch({ type: ActionType.INIT })
+    }, [])
 
     const selectShow: SelectShowActionGenerator = (show: Show) => {
         dispatch({ type: ActionType.SELECT_SHOW, show })
