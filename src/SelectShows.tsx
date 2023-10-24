@@ -58,10 +58,11 @@ export default function SelectShows({
         <div className="select-shows">
             <h2>Show Selection</h2>
             <label>
-                Filter by title:{' '}
+                Filter by title:
+                <br />
                 <input type="text" onChange={updateShowSearch} />
             </label>
-            <ul>
+            <ul className="shows">
                 {/* Show selected shows first */}
                 {shows
                     .filter((show) => selectedShowIds.includes(show.id))
@@ -69,6 +70,41 @@ export default function SelectShows({
                 {shows
                     .filter((show) => !selectedShowIds.includes(show.id))
                     .map((show) => renderShow(show, false))}
+            </ul>
+            <section className="help">
+                <h3>How to use this:</h3>
+                <p>Select the shows you're interested in above.</p>
+                <p>
+                    On the right, begin clicking performance times that work for
+                    you, and scrolling down the page. You can see visually how
+                    much time there is between performances. Make sure to leave
+                    yourself enough travel time between venues 🙂
+                </p>
+                <p>
+                    Keep going down the page and looking for performances with a{' '}
+                    <strong>dashed border</strong>. That means you have not yet
+                    selected a performance for that show. Ignore performances
+                    that are <strong>crossed out</strong>. That means you have
+                    already selected a performance for that show.
+                </p>
+                <p>
+                    You can still click a crossed-out performance to switch your
+                    performance selection for that show.
+                </p>
+                <p>
+                    Sorry there's no save or export feature yet! Once you work
+                    out your schedule, I suggest writing it down! 😃
+                </p>
+            </section>
+            <ul className="contact">
+                <li style={{ listStyleType: "'📫'" }}>
+                    <a href="mailto:linus@rachlis.net">linus@rachlis.net</a>
+                </li>
+                <li style={{ listStyleType: "'👩‍💻'" }}>
+                    <a href="https://github.com/linusrachlis/fringr2-fe/">
+                        Github
+                    </a>
+                </li>
             </ul>
         </div>
     )
