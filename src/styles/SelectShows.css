@@ -1,13 +1,35 @@
 .select-shows {
     overflow-y: scroll;
+    padding: 0 1em 1em 1em;
 }
-.select-shows ul {
+
+.select-shows ul.shows {
     padding: 0;
     margin: 0;
 }
-.select-shows li {
+.select-shows ul.shows li {
+    padding: 0;
+    margin: 0;
     list-style: none;
 }
-.select-shows a {
+.select-shows ul.shows a {
     text-decoration: none;
+}
+
+.select-shows .help {
+    margin-top: 1em;
+    border-top: 1px solid grey;
+    font-size: 80%;
+}
+
+.select-shows ul.contact {
+    border-top: 1px solid grey;
+    padding: 1em;
+}
+.select-shows ul.contact li {
+    padding: 0 0 0 0.5em;
+    margin: 0;
+}
+.select-shows ul.contact li a {
+    font-size: 75%;
 }
