@@ -6,7 +6,6 @@ import {
     PerformancesByDay,
     SelectedShows,
 } from './types.ts'
-import shows from './data/shows.ts'
 
 export const initialState: AppState = {
     minStartTime: undefined,
