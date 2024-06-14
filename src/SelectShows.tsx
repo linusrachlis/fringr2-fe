@@ -97,8 +97,14 @@ export default function SelectShows({
                     out your schedule, I suggest writing it down! 😃
                 </p>
                 <p>
-<strong>Disclaimer:</strong> this tool is unofficial. I am not affiliated with the Fringe Festival, I just love it. The Fringe Festival does not endorse this tool, although I heartily endorse the festival. Information may have become out of date since I gathered it. Please double check all information on the official Fringe Festival website using the provided links, before making plans.
-</p>
+                    <strong>Disclaimer:</strong> this tool is unofficial. I am
+                    not affiliated with the Fringe Festival, I just love it. The
+                    Fringe Festival does not endorse this tool, although I
+                    heartily endorse the festival. Information may have become
+                    out of date since I gathered it. Please double check all
+                    information on the official Fringe Festival website using
+                    the provided links, before making plans.
+                </p>
             </section>
             <ul className="contact">
                 <li style={{ listStyleType: "'📫'" }}>
