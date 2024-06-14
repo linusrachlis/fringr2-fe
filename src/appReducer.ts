@@ -6,7 +6,6 @@ import {
     PerformancesByDay,
     SelectedShows,
 } from './types.ts'
-import shows from './data/shows.ts'
 
 export const initialState: AppState = {
     minStartTime: undefined,
@@ -69,10 +68,7 @@ export default function appReducer(
 ): AppState {
     switch (action.type) {
         case ActionType.INIT: {
-            // Select all shows on init
-            const selectedShows = shows.sort((a, b) =>
-                b.title.toLowerCase() < a.title.toLowerCase() ? 1 : -1
-            )
+            const selectedShows: SelectedShows = []
             const { perfsByDay, days, minStartTime, maxEndTime, timeRange } =
                 computeAggregatePerfInfo(selectedShows)
             return {

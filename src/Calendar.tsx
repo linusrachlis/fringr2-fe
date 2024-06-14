@@ -87,8 +87,12 @@ function CalendarDay({
     )
 }
 
-function buildMapUrl(venue: string, address: string) {
-    const encodedQuery = encodeURIComponent(`${venue}, ${address}`)
+function buildLocationString(venue: string, address: string | null) {
+    return address ? `${venue}, ${address}` : venue
+}
+
+function buildMapUrl(venue: string, address: string | null) {
+    const encodedQuery = encodeURIComponent(buildLocationString(venue, address))
     return `https://www.google.com/maps/search/?api=1&query=${encodedQuery}`
 }
 
@@ -141,7 +145,7 @@ function CalendarItem({
                 <p aria-label="Venue Map Link">
                     <a
                         href={buildMapUrl(show.venue, show.address)}
-                        title={show.address}
+                        title={buildLocationString(show.venue, show.address)}
                         target="_blank"
                         rel="noopener noreferrer"
                     >

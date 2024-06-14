@@ -5,7 +5,7 @@ export type ShowBase = {
     title: string
     url: string
     venue: string
-    address: string
+    address: string | null
 }
 
 export type ShowData = ShowBase & {
