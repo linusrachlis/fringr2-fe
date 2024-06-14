@@ -69,10 +69,7 @@ export default function appReducer(
 ): AppState {
     switch (action.type) {
         case ActionType.INIT: {
-            // Select all shows on init
-            const selectedShows = shows.sort((a, b) =>
-                b.title.toLowerCase() < a.title.toLowerCase() ? 1 : -1
-            )
+            const selectedShows: SelectedShows = []
             const { perfsByDay, days, minStartTime, maxEndTime, timeRange } =
                 computeAggregatePerfInfo(selectedShows)
             return {
