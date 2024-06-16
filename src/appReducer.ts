@@ -6,6 +6,7 @@ import {
     PerformancesByDay,
     SelectedShows,
 } from './types.ts'
+import { persistSelectedShows } from './persist.ts'
 
 export const initialState: AppState = {
     minStartTime: undefined,
@@ -67,25 +68,15 @@ export default function appReducer(
     action: AppAction
 ): AppState {
     switch (action.type) {
-        case ActionType.INIT: {
-            const selectedShows: SelectedShows = []
-            const { perfsByDay, days, minStartTime, maxEndTime, timeRange } =
-                computeAggregatePerfInfo(selectedShows)
-            return {
-                selectedShows,
-                perfsByDay,
-                days,
-                minStartTime,
-                maxEndTime,
-                timeRange,
-            }
-        }
         case ActionType.SELECT_SHOW: {
             const selectedShows = state.selectedShows
                 .concat(action.show)
                 .sort((a, b) =>
                     b.title.toLowerCase() < a.title.toLowerCase() ? 1 : -1
                 )
+            if (!action.skipPersist) {
+                persistSelectedShows(selectedShows)
+            }
             const { perfsByDay, days, minStartTime, maxEndTime, timeRange } =
                 computeAggregatePerfInfo(selectedShows)
             return {
@@ -101,6 +92,20 @@ export default function appReducer(
             const selectedShows = state.selectedShows.filter(
                 (show) => show.id !== action.show.id
             )
+            const { perfsByDay, days, minStartTime, maxEndTime, timeRange } =
+                computeAggregatePerfInfo(selectedShows)
+            persistSelectedShows(selectedShows)
+            return {
+                selectedShows,
+                perfsByDay,
+                days,
+                minStartTime,
+                maxEndTime,
+                timeRange,
+            }
+        }
+        case ActionType.DESELECT_ALL_SHOWS: {
+            const selectedShows: SelectedShows = []
             const { perfsByDay, days, minStartTime, maxEndTime, timeRange } =
                 computeAggregatePerfInfo(selectedShows)
             return {
@@ -119,6 +124,9 @@ export default function appReducer(
                 }
                 return show
             })
+            if (!action.skipPersist) {
+                persistSelectedShows(selectedShows)
+            }
             return { ...state, selectedShows }
         }
         default:

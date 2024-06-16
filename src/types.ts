@@ -65,26 +65,44 @@ export type AppState = {
     days: string[]
 }
 
+// The state persisted to localStorage is a mapping of show IDs to selected
+// performance IDs. The selected perf ID is optional, since a show may not have
+// any selected perf, even though the show itself is selected.
+export type PersistentAppState = Record<string, number | null>
+
 export enum ActionType {
     SELECT_SHOW,
     DESELECT_SHOW,
+    DESELECT_ALL_SHOWS,
     TOGGLE_SELECT_PERF,
-    INIT,
 }
-type SelectOrDeselectShowAction = {
-    type: ActionType.SELECT_SHOW | ActionType.DESELECT_SHOW
+type SelectShowAction = {
+    type: ActionType.SELECT_SHOW
+    show: Show
+    skipPersist: boolean
+}
+type DeselectShowAction = {
+    type: ActionType.DESELECT_SHOW
     show: Show
 }
 type ToggleSelectPerfAction = {
     type: ActionType.TOGGLE_SELECT_PERF
     showId: number
     perfId: number
+    skipPersist: boolean
 }
 export type AppAction =
-    | SelectOrDeselectShowAction
+    | SelectShowAction
+    | DeselectShowAction
+    | { type: ActionType.DESELECT_ALL_SHOWS }
     | ToggleSelectPerfAction
-    | { type: ActionType.INIT }
 
-export type SelectShowActionGenerator = (show: Show) => void
+export type SelectShowActionGenerator = (
+    show: Show,
+    skipPersist?: boolean
+) => void
 export type DeselectShowActionGenerator = (show: Show) => void
-export type ToggleSelectPerfActionGenerator = (perf: Performance) => void
+export type ToggleSelectPerfActionGenerator = (
+    perf: Performance,
+    skipPersist?: boolean
+) => void
