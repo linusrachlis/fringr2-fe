@@ -56,7 +56,7 @@ export default function SelectShows({
 
     return (
         <div className="select-shows">
-            <h1>Toronto Fringe Festival 2024</h1>
+            <h1>Fringr: Toronto 2024</h1>
             <h2>Show Selection</h2>
             <label>
                 Filter by title:
