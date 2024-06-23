@@ -1,41 +1,64 @@
+import shows from './data/shows'
 import {
+    Performance,
     PersistentAppState,
+    SelectPerfActionGenerator,
     SelectShowActionGenerator,
     SelectedShows,
-    ToggleSelectPerfActionGenerator,
+    Show,
 } from './types'
-import shows from './data/shows'
-
-const storageKey = 'persistentAppState'
 
 export function restoreSelectedShows(
     selectShow: SelectShowActionGenerator,
-    toggleSelectPerf: ToggleSelectPerfActionGenerator
+    selectPerf: SelectPerfActionGenerator
 ): void {
-    const serialized = localStorage.getItem(storageKey)
-    const savedState: PersistentAppState = serialized
-        ? JSON.parse(serialized)
-        : {}
+    // Decode show ID => perf ID selections from query params, and dispatch
+    // actions to select them.
+    const params = new URLSearchParams(window.location.search)
+    const savedState: PersistentAppState = {}
+    params.forEach((value, key) => {
+        const perfId = value === 'null' ? null : parseInt(value)
+        const showId = key
+        savedState[showId] = perfId
+    })
 
     for (const show of shows) {
         const showIdStr = show.id.toString()
         if (!(showIdStr in savedState)) continue
         selectShow(show, true)
+
         const selectedPerfId = savedState[showIdStr]
-        if (selectedPerfId === null) continue
-        toggleSelectPerf(show.perfs[selectedPerfId], true)
+        let selectedPerf: Performance | undefined
+        if (selectedPerfId !== null) {
+            selectedPerf = getPerfById(show, selectedPerfId)
+        }
+
+        if (selectedPerf === undefined) {
+            continue
+        }
+
+        selectPerf(selectedPerf, true)
     }
 }
 
+function getPerfById(show: Show, perfId: number): Performance | undefined {
+    return show.perfs.find((perf) => perf.id === perfId)
+}
+
 export function persistSelectedShows(selectedShows: SelectedShows) {
-    const stateToSave: PersistentAppState = {}
+    // Encode show ID => perf ID selections as query params and push them into
+    // the address bar.
+    const params = new URLSearchParams()
 
     selectedShows.forEach((show) => {
-        const showIdStr = show.id.toString()
-        stateToSave[showIdStr] =
-            show.selectedPerfId === undefined ? null : show.selectedPerfId
+        params.set(
+            show.id.toString(),
+            show.selectedPerfId === undefined
+                ? 'null'
+                : show.selectedPerfId.toString()
+        )
     })
 
-    const serialized = JSON.stringify(stateToSave)
-    localStorage.setItem(storageKey, serialized)
+    const newQueryString = params.toString()
+    window.history.replaceState('', '', `?${newQueryString}`)
 }

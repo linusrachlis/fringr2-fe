@@ -1,4 +1,5 @@
 import moment, { Moment } from 'moment'
+import { persistSelectedShows } from './persist.ts'
 import {
     ActionType,
     AppAction,
@@ -6,7 +7,6 @@ import {
     PerformancesByDay,
     SelectedShows,
 } from './types.ts'
-import { persistSelectedShows } from './persist.ts'
 
 export const initialState: AppState = {
     minStartTime: undefined,
@@ -117,7 +117,7 @@ export default function appReducer(
                 timeRange,
             }
         }
-        case ActionType.TOGGLE_SELECT_PERF: {
+        case ActionType.SELECT_PERF: {
             const selectedShows = state.selectedShows.map((show) => {
                 if (show.id === action.showId) {
                     return { ...show, selectedPerfId: action.perfId }

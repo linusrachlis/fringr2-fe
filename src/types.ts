@@ -74,7 +74,7 @@ export enum ActionType {
     SELECT_SHOW,
     DESELECT_SHOW,
     DESELECT_ALL_SHOWS,
-    TOGGLE_SELECT_PERF,
+    SELECT_PERF,
 }
 type SelectShowAction = {
     type: ActionType.SELECT_SHOW
@@ -85,8 +85,8 @@ type DeselectShowAction = {
     type: ActionType.DESELECT_SHOW
     show: Show
 }
-type ToggleSelectPerfAction = {
-    type: ActionType.TOGGLE_SELECT_PERF
+type SelectPerfAction = {
+    type: ActionType.SELECT_PERF
     showId: number
     perfId: number
     skipPersist: boolean
@@ -95,14 +95,14 @@ export type AppAction =
     | SelectShowAction
     | DeselectShowAction
     | { type: ActionType.DESELECT_ALL_SHOWS }
-    | ToggleSelectPerfAction
+    | SelectPerfAction
 
 export type SelectShowActionGenerator = (
     show: Show,
     skipPersist?: boolean
 ) => void
 export type DeselectShowActionGenerator = (show: Show) => void
-export type ToggleSelectPerfActionGenerator = (
+export type SelectPerfActionGenerator = (
     perf: Performance,
     skipPersist?: boolean
 ) => void
