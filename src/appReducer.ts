@@ -1,4 +1,5 @@
 import moment, { Moment } from 'moment'
+import { persistSelectedShows } from './persist.ts'
 import {
     ActionType,
     AppAction,
@@ -67,25 +68,15 @@ export default function appReducer(
     action: AppAction
 ): AppState {
     switch (action.type) {
-        case ActionType.INIT: {
-            const selectedShows: SelectedShows = []
-            const { perfsByDay, days, minStartTime, maxEndTime, timeRange } =
-                computeAggregatePerfInfo(selectedShows)
-            return {
-                selectedShows,
-                perfsByDay,
-                days,
-                minStartTime,
-                maxEndTime,
-                timeRange,
-            }
-        }
         case ActionType.SELECT_SHOW: {
             const selectedShows = state.selectedShows
                 .concat(action.show)
                 .sort((a, b) =>
                     b.title.toLowerCase() < a.title.toLowerCase() ? 1 : -1
                 )
+            if (!action.skipPersist) {
+                persistSelectedShows(selectedShows)
+            }
             const { perfsByDay, days, minStartTime, maxEndTime, timeRange } =
                 computeAggregatePerfInfo(selectedShows)
             return {
@@ -103,6 +94,7 @@ export default function appReducer(
             )
             const { perfsByDay, days, minStartTime, maxEndTime, timeRange } =
                 computeAggregatePerfInfo(selectedShows)
+            persistSelectedShows(selectedShows)
             return {
                 selectedShows,
                 perfsByDay,
@@ -112,13 +104,29 @@ export default function appReducer(
                 timeRange,
             }
         }
-        case ActionType.TOGGLE_SELECT_PERF: {
+        case ActionType.DESELECT_ALL_SHOWS: {
+            const selectedShows: SelectedShows = []
+            const { perfsByDay, days, minStartTime, maxEndTime, timeRange } =
+                computeAggregatePerfInfo(selectedShows)
+            return {
+                selectedShows,
+                perfsByDay,
+                days,
+                minStartTime,
+                maxEndTime,
+                timeRange,
+            }
+        }
+        case ActionType.SELECT_PERF: {
             const selectedShows = state.selectedShows.map((show) => {
                 if (show.id === action.showId) {
                     return { ...show, selectedPerfId: action.perfId }
                 }
                 return show
             })
+            if (!action.skipPersist) {
+                persistSelectedShows(selectedShows)
+            }
             return { ...state, selectedShows }
         }
         default:

@@ -2,10 +2,10 @@ import moment, { Moment } from 'moment'
 import flagsKey from './data/flagsKey.ts'
 import './styles/Calendar.css'
 import {
-    PerformancesByDay,
-    SelectedShows,
     Performance,
-    ToggleSelectPerfActionGenerator,
+    PerformancesByDay,
+    SelectPerfActionGenerator,
+    SelectedShows,
 } from './types.ts'
 
 const numCssColours = 16
@@ -16,14 +16,14 @@ export default function Calendar({
     perfsByDay,
     minStartTime,
     timeRange,
-    toggleSelectPerf,
+    selectPerf,
 }: {
     selectedShows: SelectedShows
     minStartTime?: Moment
     timeRange?: number
     perfsByDay: PerformancesByDay
     days: string[]
-    toggleSelectPerf: (perf: Performance) => void
+    selectPerf: (perf: Performance) => void
 }) {
     if (selectedShows.length === 0 || minStartTime === undefined) {
         return null
@@ -41,7 +41,7 @@ export default function Calendar({
                         minStartTime: minStartTime,
                         timeRange: timeRange!,
                         selectedShows,
-                        toggleSelectPerf,
+                        selectPerf,
                     }}
                 />
             ))}
@@ -55,14 +55,14 @@ function CalendarDay({
     minStartTime,
     timeRange,
     selectedShows,
-    toggleSelectPerf,
+    selectPerf,
 }: {
     perfs: Performance[]
     dayString: string
     minStartTime: moment.Moment
     timeRange: number
     selectedShows: SelectedShows
-    toggleSelectPerf: ToggleSelectPerfActionGenerator
+    selectPerf: SelectPerfActionGenerator
 }) {
     perfs.sort((a, b) => (a.start < b.start ? -1 : b.start < a.start ? 1 : 0))
 
@@ -73,7 +73,7 @@ function CalendarDay({
                 perf,
                 minStartTime,
                 timeRange,
-                toggleSelectPerf,
+                selectPerf,
                 selectedShows,
             }}
         />
@@ -101,13 +101,13 @@ function CalendarItem({
     minStartTime,
     timeRange,
     selectedShows,
-    toggleSelectPerf,
+    selectPerf,
 }: {
     perf: Performance
     minStartTime: moment.Moment
     timeRange: number
     selectedShows: SelectedShows
-    toggleSelectPerf: ToggleSelectPerfActionGenerator
+    selectPerf: SelectPerfActionGenerator
 }) {
     const show = selectedShows.find((show) => show.id === perf.showId)
     if (!show) return
@@ -141,7 +141,7 @@ function CalendarItem({
         <li style={style} className={classNames.join(' ')}>
             <div className="start time">{perf.start.format('h:mma')}</div>
             <div className="box">
-                <h3 onClick={() => toggleSelectPerf(perf)}>{show.title}</h3>
+                <h3 onClick={() => selectPerf(perf)}>{show.title}</h3>
                 <p aria-label="Venue Map Link">
                     <a
                         href={buildMapUrl(show.venue, show.address)}
