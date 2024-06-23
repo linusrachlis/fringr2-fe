@@ -16,7 +16,10 @@ import { restoreSelectedShows } from './persist.ts'
 function App() {
     const [appState, dispatch] = useReducer(appReducer, initialState)
 
-    const selectShow: SelectShowActionGenerator = (show, skipPersist = false) => {
+    const selectShow: SelectShowActionGenerator = (
+        show,
+        skipPersist = false
+    ) => {
         dispatch({ type: ActionType.SELECT_SHOW, show, skipPersist })
     }
     const deselectShow: DeselectShowActionGenerator = (show: Show) => {
@@ -40,7 +43,7 @@ function App() {
         // cleanup theoretically a good practice, it's necessary to prevent
         // duplications of shows
         return function () {
-            dispatch({type: ActionType.DESELECT_ALL_SHOWS})
+            dispatch({ type: ActionType.DESELECT_ALL_SHOWS })
         }
     }, [])
 
