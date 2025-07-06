@@ -81,7 +81,7 @@ function CalendarDay({
 
     return (
         <li key={dayString} className="calendar-day">
-            <h2>{dayString}</h2>
+            <h2>{moment(dayString, 'YYYY-MM-DD').format('dddd D MMMM YYYY')}</h2>
             <ul>{renderedPerfs}</ul>
         </li>
     )
