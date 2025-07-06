@@ -4,8 +4,9 @@
 }
 
 .select-shows ul.shows {
-    padding: 0;
+    padding: 0 0 1em 0;
     margin: 0;
+    border-bottom: 1px solid grey;
 }
 .select-shows ul.shows li {
     padding: 0;
@@ -17,14 +18,23 @@
 }
 
 .select-shows .help {
-    margin-top: 1em;
-    border-top: 1px solid grey;
+    padding-bottom: 1em;
+    border-bottom: 1px solid grey;
     font-size: 80%;
+}
+.select-shows .help summary {
+    cursor: pointer;
+}
+.select-shows .help ol {
+    padding: 0 1em 1em 1em;
+}
+.select-shows .help ol li {
+    padding: 0 0 0 0.5em;
+    margin: 0;
 }
 
 .select-shows ul.contact {
-    border-top: 1px solid grey;
-    padding: 1em;
+    padding: 0 1em 1em 1em;
 }
 .select-shows ul.contact li {
     padding: 0 0 0 0.5em;
