@@ -63,35 +63,37 @@ export default function SelectShows({
                 <ol>
                     <li>Select the shows you're interested in below.</li>
                     <li>
-                        On the right, begin clicking performance times that work for
-                        you, and scrolling down the page. You can see visually how
-                        much time there is between performances. Make sure to leave
-                        yourself enough travel time between venues 🙂
+                        On the right, begin clicking performance times that work
+                        for you, and scrolling down the page. You can see
+                        visually how much time there is between performances.
+                        Make sure to leave yourself enough travel time between
+                        venues 🙂
                     </li>
                     <li>
-                        Keep going down the page and looking for performances with a{' '}
-                        <strong>dashed border</strong>. That means you have not yet
-                        selected a performance for that show. Ignore performances
-                        that are <strong>crossed out</strong>. That means you have
-                        already selected a performance for that show. You can still click
-                        a crossed-out performance to switch your performance selection for
-                        that show.
+                        Keep going down the page and looking for performances
+                        with a <strong>dashed border</strong>. That means you
+                        have not yet selected a performance for that show.
+                        Ignore performances that are{' '}
+                        <strong>crossed out</strong>. That means you have
+                        already selected a performance for that show. You can
+                        still click a crossed-out performance to switch your
+                        performance selection for that show.
                     </li>
                     <li style={{ listStyleType: "'💾'" }}>
                         Your address bar keeps track of your selections. To save
                         them for later, use a bookmark. To share them with a
                         friend, just copy the current address and send. Note: if
-                        you change it later, they won't see the change unless you
-                        send them a fresh link.
+                        you change it later, they won't see the change unless
+                        you send them a fresh link.
                     </li>
                     <li style={{ listStyleType: "'⚠️'" }}>
                         This tool is unofficial. I am not affiliated with the
-                        Fringe Festival, I just love it. The Fringe Festival does
-                        not endorse this tool, although I heartily endorse the
-                        festival. Information may have become out of date since I
-                        gathered it. Please double check all information on the
-                        official Fringe Festival website using the provided links,
-                        before making plans.
+                        Fringe Festival, I just love it. The Fringe Festival
+                        does not endorse this tool, although I heartily endorse
+                        the festival. Information may have become out of date
+                        since I gathered it. Please double check all information
+                        on the official Fringe Festival website using the
+                        provided links, before making plans.
                     </li>
                 </ol>
             </details>
