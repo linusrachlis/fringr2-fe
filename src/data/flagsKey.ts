@@ -1,6 +1,10 @@
 import { PerformanceFlag, PerformanceFlagDetail } from '../types'
 
 const flagsKey: Record<PerformanceFlag, PerformanceFlagDetail> = {
+    asl: {
+        emoji: '👌',
+        label: 'ASL',
+    },
     'assisted-hearing': {
         emoji: '👂',
         label: 'Assisted Hearing',
@@ -13,13 +17,21 @@ const flagsKey: Record<PerformanceFlag, PerformanceFlagDetail> = {
         emoji: '㏄',
         label: 'Closed Captioning',
     },
+    'daily-discount': {
+        emoji: '💰',
+        label: 'Daily Discount',
+    },
+    preview: {
+        emoji: '👁️',
+        label: 'Preview Performance',
+    },
+    pwyc: {
+        emoji: '💸',
+        label: 'Pay What You Can',
+    },
     relaxed: {
         emoji: '🤗',
         label: 'Relaxed Performance',
-    },
-    asl: {
-        emoji: '👌',
-        label: 'ASL',
     },
     tad: {
         emoji: '📳',
@@ -32,10 +44,6 @@ const flagsKey: Record<PerformanceFlag, PerformanceFlagDetail> = {
     'touch-tour': {
         emoji: '🖐',
         label: 'Touch Tour',
-    },
-    preview: {
-        emoji: '👁️',
-        label: 'Preview Performance',
     },
 }
 

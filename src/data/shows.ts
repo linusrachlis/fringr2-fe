@@ -29,13 +29,13 @@ const showsData: ShowData[] = [
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-08T16:00:00-04:00',
                 end: '2025-07-08T17:00:00-04:00',
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-10T21:30:00-04:00',
                 end: '2025-07-10T22:30:00-04:00',
             },
@@ -62,7 +62,7 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-04T14:00:00-04:00',
                 end: '2025-07-04T15:00:00-04:00',
             },
@@ -74,13 +74,13 @@ const showsData: ShowData[] = [
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-08T16:30:00-04:00',
                 end: '2025-07-08T17:30:00-04:00',
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-10T22:15:00-04:00',
                 end: '2025-07-10T23:15:00-04:00',
             },
@@ -119,67 +119,67 @@ const showsData: ShowData[] = [
             },
             {
                 id: 2,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-03T19:00:00-04:00',
                 end: '2025-07-03T20:00:00-04:00',
             },
             {
                 id: 3,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-04T21:00:00-04:00',
                 end: '2025-07-04T22:00:00-04:00',
             },
             {
                 id: 4,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-05T13:00:00-04:00',
                 end: '2025-07-05T14:00:00-04:00',
             },
             {
                 id: 5,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-05T19:00:00-04:00',
                 end: '2025-07-05T20:00:00-04:00',
             },
             {
                 id: 6,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'daily-discount'],
                 start: '2025-07-06T15:00:00-04:00',
                 end: '2025-07-06T16:00:00-04:00',
             },
             {
                 id: 7,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-09T21:00:00-04:00',
                 end: '2025-07-09T22:00:00-04:00',
             },
             {
                 id: 8,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-10T19:00:00-04:00',
                 end: '2025-07-10T20:00:00-04:00',
             },
             {
                 id: 9,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-11T19:00:00-04:00',
                 end: '2025-07-11T20:00:00-04:00',
             },
             {
                 id: 10,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-12T15:00:00-04:00',
                 end: '2025-07-12T16:00:00-04:00',
             },
             {
                 id: 11,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-12T21:00:00-04:00',
                 end: '2025-07-12T22:00:00-04:00',
             },
             {
                 id: 12,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-13T13:00:00-04:00',
                 end: '2025-07-13T14:00:00-04:00',
             },
@@ -207,7 +207,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['daily-discount'],
                 start: '2025-07-06T21:45:00-04:00',
                 end: '2025-07-06T22:45:00-04:00',
             },
@@ -252,7 +252,7 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['daily-discount'],
                 start: '2025-07-03T18:15:00-04:00',
                 end: '2025-07-03T19:15:00-04:00',
             },
@@ -304,19 +304,19 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-02T21:00:00-04:00',
                 end: '2025-07-02T22:25:00-04:00',
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-03T21:00:00-04:00',
                 end: '2025-07-03T22:25:00-04:00',
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-04T21:00:00-04:00',
                 end: '2025-07-04T22:25:00-04:00',
             },
@@ -620,7 +620,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-08T20:45:00-04:00',
                 end: '2025-07-08T21:30:00-04:00',
             },
@@ -654,13 +654,13 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['daily-discount'],
                 start: '2025-07-02T21:30:00-04:00',
                 end: '2025-07-02T22:30:00-04:00',
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-04T16:00:00-04:00',
                 end: '2025-07-04T17:00:00-04:00',
             },
@@ -705,13 +705,13 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-02T16:00:00-04:00',
                 end: '2025-07-02T17:00:00-04:00',
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['daily-discount'],
                 start: '2025-07-04T22:30:00-04:00',
                 end: '2025-07-04T23:30:00-04:00',
             },
@@ -865,13 +865,13 @@ const showsData: ShowData[] = [
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['daily-discount'],
                 start: '2025-07-05T19:15:00-04:00',
                 end: '2025-07-05T20:15:00-04:00',
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['daily-discount'],
                 start: '2025-07-06T16:00:00-04:00',
                 end: '2025-07-06T17:00:00-04:00',
             },
@@ -911,7 +911,7 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-03T15:00:00-04:00',
                 end: '2025-07-03T15:45:00-04:00',
             },
@@ -929,13 +929,13 @@ const showsData: ShowData[] = [
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-08T14:45:00-04:00',
                 end: '2025-07-08T15:30:00-04:00',
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-09T17:15:00-04:00',
                 end: '2025-07-09T18:00:00-04:00',
             },
@@ -968,7 +968,7 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-04T15:00:00-04:00',
                 end: '2025-07-04T15:55:00-04:00',
             },
@@ -980,7 +980,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-07T20:00:00-04:00',
                 end: '2025-07-07T20:55:00-04:00',
             },
@@ -1082,7 +1082,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-04T22:15:00-04:00',
                 end: '2025-07-04T23:15:00-04:00',
             },
@@ -1350,19 +1350,19 @@ const showsData: ShowData[] = [
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-06T14:15:00-04:00',
                 end: '2025-07-06T15:30:00-04:00',
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-08T21:30:00-04:00',
                 end: '2025-07-08T22:45:00-04:00',
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-09T15:45:00-04:00',
                 end: '2025-07-09T17:00:00-04:00',
             },
@@ -1374,7 +1374,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 7,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-13T13:00:00-04:00',
                 end: '2025-07-13T14:15:00-04:00',
             },
@@ -1636,73 +1636,73 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-02T19:00:00-04:00',
                 end: '2025-07-02T20:00:00-04:00',
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-03T21:00:00-04:00',
                 end: '2025-07-03T22:00:00-04:00',
             },
             {
                 id: 3,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-04T19:00:00-04:00',
                 end: '2025-07-04T20:00:00-04:00',
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-05T15:00:00-04:00',
                 end: '2025-07-05T16:00:00-04:00',
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-05T21:00:00-04:00',
                 end: '2025-07-05T22:00:00-04:00',
             },
             {
                 id: 6,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-06T13:00:00-04:00',
                 end: '2025-07-06T14:00:00-04:00',
             },
             {
                 id: 7,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-09T19:00:00-04:00',
                 end: '2025-07-09T20:00:00-04:00',
             },
             {
                 id: 8,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-10T21:00:00-04:00',
                 end: '2025-07-10T22:00:00-04:00',
             },
             {
                 id: 9,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-11T21:00:00-04:00',
                 end: '2025-07-11T22:00:00-04:00',
             },
             {
                 id: 10,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-12T13:00:00-04:00',
                 end: '2025-07-12T14:00:00-04:00',
             },
             {
                 id: 11,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-12T19:00:00-04:00',
                 end: '2025-07-12T20:00:00-04:00',
             },
             {
                 id: 12,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-13T15:00:00-04:00',
                 end: '2025-07-13T16:00:00-04:00',
             },
@@ -1717,49 +1717,49 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-03T17:15:00-04:00',
                 end: '2025-07-03T18:10:00-04:00',
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-04T22:00:00-04:00',
                 end: '2025-07-04T22:55:00-04:00',
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-06T20:15:00-04:00',
                 end: '2025-07-06T21:10:00-04:00',
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-07T14:30:00-04:00',
                 end: '2025-07-07T15:25:00-04:00',
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-08T18:15:00-04:00',
                 end: '2025-07-08T19:10:00-04:00',
             },
             {
                 id: 6,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-10T20:15:00-04:00',
                 end: '2025-07-10T21:10:00-04:00',
             },
             {
                 id: 7,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-11T15:00:00-04:00',
                 end: '2025-07-11T15:55:00-04:00',
             },
             {
                 id: 8,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-12T16:45:00-04:00',
                 end: '2025-07-12T17:40:00-04:00',
             },
@@ -1786,7 +1786,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['daily-discount'],
                 start: '2025-07-06T14:15:00-04:00',
                 end: '2025-07-06T15:10:00-04:00',
             },
@@ -1798,7 +1798,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 5,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-10T17:45:00-04:00',
                 end: '2025-07-10T18:40:00-04:00',
             },
@@ -1868,7 +1868,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 8,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-12T17:30:00-04:00',
                 end: '2025-07-12T18:00:00-04:00',
             },
@@ -2016,7 +2016,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-06T22:00:00-04:00',
                 end: '2025-07-06T23:15:00-04:00',
             },
@@ -2124,37 +2124,37 @@ const showsData: ShowData[] = [
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-05T13:00:00-04:00',
                 end: '2025-07-05T13:55:00-04:00',
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-06T16:45:00-04:00',
                 end: '2025-07-06T17:40:00-04:00',
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-09T14:30:00-04:00',
                 end: '2025-07-09T15:25:00-04:00',
             },
             {
                 id: 6,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-10T18:30:00-04:00',
                 end: '2025-07-10T19:25:00-04:00',
             },
             {
                 id: 7,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-11T20:15:00-04:00',
                 end: '2025-07-11T21:10:00-04:00',
             },
             {
                 id: 8,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-13T15:15:00-04:00',
                 end: '2025-07-13T16:10:00-04:00',
             },
@@ -2308,7 +2308,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-09T22:00:00-04:00',
                 end: '2025-07-09T22:55:00-04:00',
             },
@@ -2443,19 +2443,19 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-03T19:00:00-04:00',
                 end: '2025-07-03T20:06:00-04:00',
             },
             {
                 id: 2,
-                flags: ['relaxed', 'closed-captioning', 'touch-tour'],
+                flags: ['relaxed', 'closed-captioning', 'touch-tour', 'pwyc'],
                 start: '2025-07-04T16:00:00-04:00',
                 end: '2025-07-04T17:06:00-04:00',
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-06T16:00:00-04:00',
                 end: '2025-07-06T17:06:00-04:00',
             },
@@ -2506,7 +2506,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-04T18:00:00-04:00',
                 end: '2025-07-04T19:10:00-04:00',
             },
@@ -2729,7 +2729,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 5,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-10T13:30:00-04:00',
                 end: '2025-07-10T14:30:00-04:00',
             },
@@ -2763,7 +2763,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-04T16:15:00-04:00',
                 end: '2025-07-04T17:15:00-04:00',
             },
@@ -2775,13 +2775,13 @@ const showsData: ShowData[] = [
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-08T22:15:00-04:00',
                 end: '2025-07-08T23:15:00-04:00',
             },
             {
                 id: 5,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-10T14:15:00-04:00',
                 end: '2025-07-10T15:15:00-04:00',
             },
@@ -2815,7 +2815,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['daily-discount'],
                 start: '2025-07-04T21:45:00-04:00',
                 end: '2025-07-04T22:45:00-04:00',
             },
@@ -2827,7 +2827,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-09T13:45:00-04:00',
                 end: '2025-07-09T14:45:00-04:00',
             },
@@ -2987,13 +2987,13 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-03T15:15:00-04:00',
                 end: '2025-07-03T16:10:00-04:00',
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-05T18:30:00-04:00',
                 end: '2025-07-05T19:25:00-04:00',
             },
@@ -3011,7 +3011,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-08T22:00:00-04:00',
                 end: '2025-07-08T22:55:00-04:00',
             },
@@ -3062,13 +3062,13 @@ const showsData: ShowData[] = [
             },
             {
                 id: 4,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-09T16:15:00-04:00',
                 end: '2025-07-09T17:00:00-04:00',
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-10T12:30:00-04:00',
                 end: '2025-07-10T13:15:00-04:00',
             },
@@ -3095,31 +3095,31 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-03T18:30:00-04:00',
                 end: '2025-07-03T19:30:00-04:00',
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-05T15:00:00-04:00',
                 end: '2025-07-05T16:00:00-04:00',
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-06T16:30:00-04:00',
                 end: '2025-07-06T17:30:00-04:00',
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-07T22:00:00-04:00',
                 end: '2025-07-07T23:00:00-04:00',
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-08T14:45:00-04:00',
                 end: '2025-07-08T15:45:00-04:00',
             },
@@ -3164,7 +3164,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 3,
-                flags: ['relaxed', 'closed-captioning'],
+                flags: ['relaxed', 'closed-captioning', 'pwyc'],
                 start: '2025-07-05T13:15:00-04:00',
                 end: '2025-07-05T14:15:00-04:00',
             },
@@ -3194,7 +3194,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 8,
-                flags: ['relaxed', 'closed-captioning'],
+                flags: ['relaxed', 'closed-captioning', 'pwyc'],
                 start: '2025-07-12T13:15:00-04:00',
                 end: '2025-07-12T14:15:00-04:00',
             },
@@ -3272,7 +3272,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-04T19:15:00-04:00',
                 end: '2025-07-04T20:15:00-04:00',
             },
@@ -3317,31 +3317,31 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-02T20:00:00-04:00',
                 end: '2025-07-02T20:50:00-04:00',
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-03T21:45:00-04:00',
                 end: '2025-07-03T22:35:00-04:00',
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-05T17:45:00-04:00',
                 end: '2025-07-05T18:35:00-04:00',
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-08T22:00:00-04:00',
                 end: '2025-07-08T22:50:00-04:00',
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-09T19:30:00-04:00',
                 end: '2025-07-09T20:20:00-04:00',
             },
@@ -3470,37 +3470,37 @@ const showsData: ShowData[] = [
             },
             {
                 id: 2,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-04T20:15:00-04:00',
                 end: '2025-07-04T21:10:00-04:00',
             },
             {
                 id: 3,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-05T13:00:00-04:00',
                 end: '2025-07-05T13:55:00-04:00',
             },
             {
                 id: 4,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-07T16:45:00-04:00',
                 end: '2025-07-07T17:40:00-04:00',
             },
             {
                 id: 5,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-08T14:30:00-04:00',
                 end: '2025-07-08T15:25:00-04:00',
             },
             {
                 id: 6,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-10T16:15:00-04:00',
                 end: '2025-07-10T17:10:00-04:00',
             },
             {
                 id: 7,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-12T22:15:00-04:00',
                 end: '2025-07-12T23:10:00-04:00',
             },
@@ -3521,37 +3521,37 @@ const showsData: ShowData[] = [
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-05T18:15:00-04:00',
                 end: '2025-07-05T19:15:00-04:00',
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-06T22:15:00-04:00',
                 end: '2025-07-06T23:15:00-04:00',
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-09T19:30:00-04:00',
                 end: '2025-07-09T20:30:00-04:00',
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-10T14:15:00-04:00',
                 end: '2025-07-10T15:15:00-04:00',
             },
             {
                 id: 6,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-12T22:00:00-04:00',
                 end: '2025-07-12T23:00:00-04:00',
             },
             {
                 id: 7,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-13T16:00:00-04:00',
                 end: '2025-07-13T17:00:00-04:00',
             },
@@ -3566,19 +3566,19 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['daily-discount'],
                 start: '2025-07-02T16:00:00-04:00',
                 end: '2025-07-02T17:00:00-04:00',
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['daily-discount'],
                 start: '2025-07-04T18:30:00-04:00',
                 end: '2025-07-04T19:30:00-04:00',
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['daily-discount'],
                 start: '2025-07-05T11:30:00-04:00',
                 end: '2025-07-05T12:30:00-04:00',
             },
@@ -3955,37 +3955,37 @@ const showsData: ShowData[] = [
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-05T22:15:00-04:00',
                 end: '2025-07-05T23:15:00-04:00',
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-06T17:15:00-04:00',
                 end: '2025-07-06T18:15:00-04:00',
             },
             {
                 id: 4,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-08T15:30:00-04:00',
                 end: '2025-07-08T16:30:00-04:00',
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-10T19:30:00-04:00',
                 end: '2025-07-10T20:30:00-04:00',
             },
             {
                 id: 6,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-11T13:00:00-04:00',
                 end: '2025-07-11T14:00:00-04:00',
             },
             {
                 id: 7,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-12T16:15:00-04:00',
                 end: '2025-07-12T17:15:00-04:00',
             },
@@ -4000,13 +4000,13 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-02T19:30:00-04:00',
                 end: '2025-07-02T20:25:00-04:00',
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-04T15:00:00-04:00',
                 end: '2025-07-04T15:55:00-04:00',
             },
@@ -4024,7 +4024,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-07T14:45:00-04:00',
                 end: '2025-07-07T15:40:00-04:00',
             },
@@ -4057,7 +4057,7 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-03T14:00:00-04:00',
                 end: '2025-07-03T14:59:00-04:00',
             },
@@ -4075,7 +4075,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 4,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-07T13:00:00-04:00',
                 end: '2025-07-07T13:59:00-04:00',
             },
@@ -4132,7 +4132,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['daily-discount'],
                 start: '2025-07-06T14:00:00-04:00',
                 end: '2025-07-06T14:50:00-04:00',
             },
@@ -4240,7 +4240,7 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-03T16:45:00-04:00',
                 end: '2025-07-03T17:40:00-04:00',
             },
@@ -4270,13 +4270,13 @@ const showsData: ShowData[] = [
             },
             {
                 id: 6,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-09T20:00:00-04:00',
                 end: '2025-07-09T20:55:00-04:00',
             },
             {
                 id: 7,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-11T13:15:00-04:00',
                 end: '2025-07-11T14:10:00-04:00',
             },
@@ -4298,7 +4298,7 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-03T18:00:00-04:00',
                 end: '2025-07-03T18:55:00-04:00',
             },
@@ -4316,19 +4316,19 @@ const showsData: ShowData[] = [
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-07T19:30:00-04:00',
                 end: '2025-07-07T20:25:00-04:00',
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-09T21:45:00-04:00',
                 end: '2025-07-09T22:40:00-04:00',
             },
             {
                 id: 6,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-10T16:15:00-04:00',
                 end: '2025-07-10T17:10:00-04:00',
             },
@@ -4379,13 +4379,13 @@ const showsData: ShowData[] = [
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-09T14:30:00-04:00',
                 end: '2025-07-09T15:30:00-04:00',
             },
             {
                 id: 6,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-11T13:00:00-04:00',
                 end: '2025-07-11T14:00:00-04:00',
             },
@@ -4664,7 +4664,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-08T18:30:00-04:00',
                 end: '2025-07-08T19:25:00-04:00',
             },
@@ -4817,7 +4817,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-06T15:00:00-04:00',
                 end: '2025-07-06T16:00:00-04:00',
             },
@@ -4874,7 +4874,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-06T19:30:00-04:00',
                 end: '2025-07-06T20:30:00-04:00',
             },
@@ -4913,7 +4913,7 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['daily-discount'],
                 start: '2025-07-04T15:00:00-04:00',
                 end: '2025-07-04T16:00:00-04:00',
             },
@@ -4964,7 +4964,7 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-04T14:30:00-04:00',
                 end: '2025-07-04T15:25:00-04:00',
             },
@@ -4976,7 +4976,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-09T13:45:00-04:00',
                 end: '2025-07-09T14:40:00-04:00',
             },
@@ -5004,7 +5004,7 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-03T19:45:00-04:00',
                 end: '2025-07-03T20:45:00-04:00',
             },
@@ -5016,19 +5016,19 @@ const showsData: ShowData[] = [
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-05T16:15:00-04:00',
                 end: '2025-07-05T17:15:00-04:00',
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['daily-discount'],
                 start: '2025-07-06T18:00:00-04:00',
                 end: '2025-07-06T19:00:00-04:00',
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-07T14:00:00-04:00',
                 end: '2025-07-07T15:00:00-04:00',
             },
@@ -5062,7 +5062,7 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-03T16:00:00-04:00',
                 end: '2025-07-03T17:00:00-04:00',
             },
@@ -5144,7 +5144,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-10T13:30:00-04:00',
                 end: '2025-07-10T14:20:00-04:00',
             },
@@ -5189,13 +5189,13 @@ const showsData: ShowData[] = [
             },
             {
                 id: 4,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-09T16:00:00-04:00',
                 end: '2025-07-09T17:00:00-04:00',
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-11T14:30:00-04:00',
                 end: '2025-07-11T15:30:00-04:00',
             },
@@ -5234,7 +5234,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-07T16:00:00-04:00',
                 end: '2025-07-07T17:10:00-04:00',
             },
@@ -5280,7 +5280,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 4,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-08T15:45:00-04:00',
                 end: '2025-07-08T16:45:00-04:00',
             },
@@ -5344,7 +5344,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 6,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-09T15:15:00-04:00',
                 end: '2025-07-09T16:05:00-04:00',
             },
@@ -5428,7 +5428,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 2,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-04T18:15:00-04:00',
                 end: '2025-07-04T19:05:00-04:00',
             },
@@ -5440,7 +5440,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 4,
-                flags: ['relaxed'],
+                flags: ['relaxed', 'pwyc'],
                 start: '2025-07-06T14:00:00-04:00',
                 end: '2025-07-06T14:50:00-04:00',
             },
@@ -5455,7 +5455,7 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-02T17:45:00-04:00',
                 end: '2025-07-02T18:35:00-04:00',
             },
@@ -5491,7 +5491,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 7,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-11T22:15:00-04:00',
                 end: '2025-07-11T23:05:00-04:00',
             },
@@ -5563,13 +5563,13 @@ const showsData: ShowData[] = [
         perfsData: [
             {
                 id: 1,
-                flags: [],
+                flags: ['daily-discount'],
                 start: '2025-07-03T19:45:00-04:00',
                 end: '2025-07-03T20:40:00-04:00',
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['daily-discount'],
                 start: '2025-07-05T21:30:00-04:00',
                 end: '2025-07-05T22:25:00-04:00',
             },
@@ -5587,7 +5587,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 5,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-09T16:00:00-04:00',
                 end: '2025-07-09T16:55:00-04:00',
             },
@@ -5620,7 +5620,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 2,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-03T19:00:00-04:00',
                 end: '2025-07-03T20:25:00-04:00',
             },
@@ -5644,7 +5644,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 6,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-08T19:00:00-04:00',
                 end: '2025-07-08T20:25:00-04:00',
             },
@@ -5701,7 +5701,7 @@ const showsData: ShowData[] = [
             },
             {
                 id: 3,
-                flags: [],
+                flags: ['pwyc'],
                 start: '2025-07-07T16:00:00-04:00',
                 end: '2025-07-07T16:54:00-04:00',
             },
