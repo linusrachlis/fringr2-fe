@@ -13,3 +13,22 @@ https://fringr.rachlis.net
 ## Contributing
 
 This project is in a very early stage and not ready for unsolicited contributions. I have lots of plans for improvement that I haven't had time for yet, which you can see under the issue tracker. I would welcome additional feedback there, if you have an issue or idea that you don't see listed.
+
+### Development commands
+
+```sh
+# Initial setup
+npm install
+
+# Run dev server
+npm run dev
+
+# Lint
+npm run lint
+
+# Format
+npx prettier src/ --write
+
+# Build for production
+npm run build
+```
