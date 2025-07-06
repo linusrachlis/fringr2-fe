@@ -39,15 +39,17 @@ export type Performance = PerformanceBase & {
 }
 
 export type PerformanceFlag =
+    | 'asl'
     | 'assisted-hearing'
     | 'audio-description'
     | 'closed-captioning'
+    | 'daily-discount'
+    | 'preview'
+    | 'pwyc'
     | 'relaxed'
-    | 'asl'
     | 'tad'
     | 'touch-book'
     | 'touch-tour'
-    | 'preview'
 
 export type PerformanceFlagDetail = {
     emoji: string
