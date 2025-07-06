@@ -34,8 +34,8 @@ export default function Calendar({
         <ul className="calendar">
             {days.map((dayString) => (
                 <CalendarDay
+                    key={dayString}
                     {...{
-                        key: dayString,
                         dayString,
                         perfs: perfsByDay[dayString],
                         minStartTime: minStartTime,
@@ -68,8 +68,8 @@ function CalendarDay({
 
     const renderedPerfs = perfs.map((perf, index) => (
         <CalendarItem
+            key={index}
             {...{
-                key: index,
                 perf,
                 minStartTime,
                 timeRange,
